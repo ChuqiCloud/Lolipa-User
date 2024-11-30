@@ -1,0 +1,1548 @@
+
+	.ng-hide:not(.ng-hide-animate) {
+		display: none !important;
+	}
+
+	.ng-animate-shim {
+		visibility: hidden;
+	}
+
+	.ng-anchor {
+		position: absolute;
+	}
+
+	:focus {
+		outline: none;
+	}
+
+	.iam-input-text,
+	.iam-name-tooltip {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box
+	}
+
+	#hwidsdk_mudule_container {
+		width: 100%
+	}
+
+	.iam-input-text {
+		width: 100%;
+		height: 48px;
+		border-radius: 4px;
+		border: 1px solid #c3c3c3;
+		color: #666;
+		background-color: #fff;
+		padding: 2px 16px;
+		box-sizing: border-box;
+		outline: 0;
+		vertical-align: middle
+	}
+
+	.iam-input-text:focus {
+		border: 1px solid #000
+	}
+
+	input:disabled {
+		background-color: #CCC;
+		box-shadow: none
+	}
+
+	.iam-input-text::-ms-clear,
+	.iam-input-text::-ms-reveal {
+		display: none
+	}
+
+	#loading {
+		display: none
+	}
+
+	#content .widthLimit {
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: row;
+		justify-content: center
+	}
+
+	#loginAdv {
+		width: 800px;
+		height: 438px;
+		top: -50px;
+	    position: relative;
+	}
+
+	#email {
+		width: 376px;
+		display: -webkit-flex;
+		display: flex;
+		background: #fff;
+		border-radius: 4px;
+		flex-direction: column;
+	}
+
+	#email .loginFormDiv,
+	#hwLoginDivId .loginFormDiv {
+		width: 100%
+	}
+
+	#email .loginTypeDiv,
+	#hwLoginDivId .loginTypeDiv {
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 32px;
+		margin-bottom: 32px
+	}
+
+	#email .loginFormDiv .inputField,
+	.inputField {
+		margin-bottom: 24px
+	}
+.zdjj{margin-bottom: 26px;}
+	#email .loginFormDiv .pwdInputField,
+	#hwLoginDivId .loginFormDiv .pwdInputField {
+		position: relative
+	}
+
+	.pwdShowimg {
+		top: 10px;
+		right: 10px;
+		width: 32px;
+		height: 32px;
+		position: absolute
+	}
+.btn-primary {
+    color: #fff;
+    background-image: -webkit-gradient(linear,right top,left top,from(#0080ff),to(#0080ff));
+    background-image: -webkit-linear-gradient(right,#0080ff,#0080ff);
+    background-image: linear-gradient(270deg,#0080ff,#0080ff);
+    float: right;
+    margin-left: 15px;
+    width: 100%;
+	border: none;
+}
+.btn-primary:hover{
+background-image: -webkit-gradient(linear,left top,right top,from(#0080ff),to(#0080ff));
+	background-image: -webkit-linear-gradient(left,#0080ff,#0080ff);
+	background-image: linear-gradient(90deg,#0080ff,#0080ff);
+	border: none;
+}
+	.buttonAreaDiv {
+		margin-top: 8px;
+		width: 100%
+	}
+
+	.loginBtn {
+		border-radius: 4px;
+		color: #fff;
+		cursor: default;
+		width: 100%
+	}
+
+	.loginBtn:active,
+	.loginBtn:focus,
+	.loginBtn:hover {
+		cursor: pointer;
+		box-shadow: 0 8px 16px rgba(106, 114, 246, 0.3);
+		outline: 0
+	}
+
+	.loginBtn:hover {
+		background: #D64A52
+	}
+
+	.loginBtn:active,
+	.loginBtn:focus {
+		background: #B12220
+	}
+
+	.loginBtn span,.loginBtn button,
+	.loginBtnDisabled span,.loginBtnDisabled button{
+		vertical-align: middle;
+		text-align: center;
+		font-size: 16px !important;
+		height: 48px;
+		margin: 0 auto;
+		display: block;
+		color: #fff;
+		line-height: 48px;
+		border: none;
+		width: 100%;
+		background-image: -webkit-gradient(linear,right top,left top,from(#0080ff),to(#0080ff));
+		background-image: -webkit-linear-gradient(right,#0080ff,#0080ff);
+		background-image: linear-gradient(270deg,#0080ff,#0080ff);
+	}
+
+	.loginBtnDisabled span{
+		background-image: -webkit-gradient(linear,right top,left top,from(#b8d5ff),to(#b8d5ff));
+		background-image: -webkit-linear-gradient(right,#b8d5ff,#b8d5ff);
+		background-image: linear-gradient(90deg,#b8d5ff,#b8d5ff);
+		border-radius: 4px;
+		color: #fff;
+		font-size: 16px !important;
+		cursor: no-drop !important;
+		width: 100%;
+	}
+.captcha{float: left;
+    width: 50%;}
+	.group-appendimg img{
+	    height: 46px;
+	    float: right;
+	    width: 46%;
+	}
+.guobie {
+    float: left;
+    width: 30%;
+}
+.guobie .iam-input-text{border-bottom-right-radius: 0;
+    border-top-right-radius: 0;}
+.gbjj .iam-input-text{border-bottom-left-radius: 0;
+    border-top-left-radius: 0;margin-left: -1px;}
+	.gbjj{display: flex;}
+	
+	.form-control {
+	    display: block;
+	    width: 100%;
+	    height: 48px;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    color: #555;
+	    background-color: #fff;
+	    background-image: none;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+	    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+	    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	}
+	.loginBtnDisabled:active,
+	.loginBtnDisabled:focus,
+	.loginBtnDisabled:hover {
+		background-color: rgba(19, 2, 199, 0.3);
+		box-shadow: none
+	}
+
+	#bottomBtns {
+		margin-top: 32px;
+		margin-bottom: 40px;
+		font-size: 14px;
+		color: #252B3A;
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	#bottomBtns .forgetPwdLink:hover,
+	.closeImg,
+	.learnMoreLink {
+		color: #526ECC;
+		cursor: pointer
+	}
+
+	.learnMoreLink {
+		cursor: pointer;
+		text-decoration: underline
+	}
+
+	#bottomBtns .forgetPwdLink,#bottomBtns .forgetPwdLink a,
+	.otherLoginWays {
+		color: rgba(0, 0, 0, .5)
+	}
+
+	#bottomBtns .forgetPwdLink a:hover,.otherLoginWays .otherItemDiv:hover {
+		cursor: pointer;
+		opacity: 1;
+		color: #526ECC
+	}
+.otherItemDiv a{}
+	#quickLoginDiv .otherLoginWays,
+	#hwLoginDivId .otherLoginWays {
+		width: 100%;
+	}
+
+	#quickLoginDiv .otherLoginWays .otherLoginTip span,
+	#hwLoginDivId .otherLoginWays .otherLoginTip span {
+		background-color: #fff;
+		padding: 0 12px;
+		position: relative
+	}
+
+	.intervalDiv {
+		color: #DDD;
+	}
+
+	.hwInterval {
+		margin: 0 6px;
+	}
+
+	#quickLoginDiv .otherLoginWays .otherLoginTip,
+	#hwLoginDivId .otherLoginWays .otherLoginTip {
+		width: 100%;
+		text-align: center;
+		position: relative;
+		line-height: 1;
+		margin-bottom: 12px;
+		display: block
+	}
+
+	#quickLoginDiv .otherLoginWays .otherLoginTip:before,
+	#hwLoginDivId .otherLoginWays .otherLoginTip:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		display: block;
+		width: 100%;
+		border-top: 1px solid #DDD
+	}
+
+	#hwLoginDivId .otherLoginWays.forMobile {
+		display: none;
+	}
+
+	.privacyMsg span {
+		color: #000;
+		opacity: .5
+	}
+
+	.errorMsgDiv {
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		width: 100%;
+		margin-bottom: 24px;
+		background-color: #FFEEED;
+		border: 1px solid #C7020B;
+		border-radius: 4px
+	}
+
+	.errorMsgDiv img {
+		width: 18px;
+		height: 18px;
+		margin: 1px 8px 0 16px
+	}
+
+	.errorMsgDiv .msgDiv {
+		margin-right: 16px
+	}
+
+	.errorMsgDiv .msgDiv .msgContent {
+		word-break: break-word
+	}
+
+	#verifyCode {
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center
+	}
+
+	#inputVerifyCodeImg {
+		height: 40px
+	}
+
+	#validresultImg {
+		top: 16px;
+		right: 14px;
+		position: absolute
+	}
+
+	.iam-name-tooltip {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		color: #000;
+		padding: 24px 15px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+		border-radius: 4px;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		z-index: 5000;
+		white-space: normal;
+		word-wrap: break-word
+	}
+
+	.iam-name-tooltip a,
+	.iam-name-tooltip a:hover {
+		color: #526ECC
+	}
+
+	#hwLoginDivId,
+	.hwLoginDivMask {
+		width: 376px;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		background: #fff;
+		border-radius: 4px;
+		flex-direction: column;
+		padding:44px
+	}
+
+	.hwLoginDivMask {
+		height: calc(100% - 130px)
+	}
+
+	.iam-input-error {
+		border-color: #FA2A2D;
+		background-color: #FFEEED
+	}
+
+	.loginErrorMsg {
+		line-height: 12px;
+		font-size: 12px;
+		margin-top: 4px;
+		color: #FA2A2D
+	}
+
+	.loginErrorMsg img {
+		width: 12px;
+		vertical-align: bottom
+	}
+
+	.verifyCodeContainer {
+		width: 100%;
+		margin-bottom: 24px
+	}
+
+	.privacyMsg {
+		margin-top: 22px;
+		width: 100%;
+		font-size: 12px;
+	}
+
+	.privacyMsgLink {
+		color: #526ECC
+	}
+
+	.privacyMsgLink:hover {
+		text-decoration: none;
+		color: #526ECC
+	}
+
+	#hwLoginDivId .hwid-root {
+		width: 100%
+	}
+
+	#hwLoginDivId .hwid-root .hwid-login-root.hwid-login-root-iframe .hwid-common-content {
+		min-height: 0
+	}
+
+	#hwLoginDivId>div.hwid-root>div>div:nth-child(1)>div>div:nth-child(2)>div.hwid-common-content>div.hwid-header-tab {
+		padding-top: 48px
+	}
+
+	#hwLoginDivId .hwid-root .hwid-login-root.hwid-login-root-iframe .hwid-login-container {
+		height: auto
+	}
+
+	.hwLoginDivMask .loadingImg {
+		margin: auto
+	}
+	.inputClearIcon:hover,
+	input:focus+.inputClearIcon {
+		display: block
+	}
+.zdlogin{position: absolute;
+left:50%;
+    top:45%;
+    transform: translate(-50%, -50%);}
+	.loginDiv {
+
+		background: #fff;
+		border-radius: 4px;
+		box-shadow: 2px 2px 20px 0 rgb(0 0 0 / 10%);
+	}
+
+	.QRLoginSwitchDiv {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		height: 65px;
+		border-bottom: 1px solid #DFE1E6;
+		font-size: 18px;
+		color: rgba(0, 0, 0, .5);
+		cursor: pointer
+	}
+
+	.QRLoginSwitchDiv .QRLogin,
+	.QRLoginSwitchDiv .accountLogin {
+		flex-grow: 1;
+		text-align: center;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center
+	}
+
+	.QRLoginSwitchDiv .QRLogin div,
+	.QRLoginSwitchDiv .accountLogin div {
+		height: calc(100% - 5px);
+		display: flex;
+		align-items: center;
+		border-bottom: 3px solid transparent;
+		border-top: 3px solid transparent
+	}
+
+	.QRLoginSwitchDiv .intervalDiv {
+		height: 20px;
+		border-right: 1px solid #DFE1E6
+	}
+
+	.QRLoginSwitchDiv div.selectedType {
+		border-bottom: 3px solid #252B3A;
+		color: #252B3A
+	}
+
+	#QRLoginDiv {
+		background-color: #fff;
+		color: #DFE1E6;
+		font-size: 14px;
+		border-color: rgba(228, 228, 228, 1);
+		border-radius: 4px;
+		display: flex;
+		width: 376px;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding-left: 44px;
+		padding-right: 44px;
+		height: 90%;
+	}
+
+	.loginQRCodeDiv {
+		width: 260px;
+		padding: 20px
+	}
+	.QRCodeInner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: #FFF;
+		height: 300px;
+		width: 300px;
+		background: rgba(7, 7, 7, .6)
+	}
+
+	#countDownDiv {
+		text-align: center;
+		color: #252B3A;
+		font-size: 14px;
+		margin-top: 50px;
+		height: 20px
+	}
+
+	.remainingTimeTxt {
+		color: #F66F6A
+	}
+
+	#QRLoginBottomDiv {
+		height: 14px;
+		line-height: 14px;
+		font-size: 14px;
+		margin-bottom: 50px;
+		margin-top: 34px;
+	}
+
+	#QRLoginBottomDiv .intervalDiv {
+		display: inline;
+		margin: 0 10px
+	}
+
+	.QRLoginBottomColor {
+		font-size: 14px;
+		color: rgba(0, 0, 0, .5)
+	}
+
+	.QRLoginBottomColor:active,
+	.QRLoginBottomColor:focus,
+	.QRLoginBottomColor:hover {
+		color: #526ECC;
+		text-decoration: none
+	}
+
+	.QRCodeInvalid {
+		font-size: 16px;
+		text-align: center;
+		margin-bottom: 10px;
+		margin-top: 110px
+	}
+
+	#refreshQRCodeBtn {
+		width: 92px;
+		margin: 0 auto;
+		height: 40px
+	}
+
+	#refreshQRCodeBtn span {
+		line-height: 40px
+	}
+
+	.loginStatusDiv {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1
+	}
+
+	.loginStatusImg {
+		height: 64px;
+		width: 64px;
+		margin-bottom: 32px
+	}
+
+	.loginStatusTitle {
+		color: #252B3A;
+		font-size: 18px;
+		font-weight: 500;
+		margin-bottom: 12px;
+		line-height: 26px
+	}
+
+	.loginStatusMessage {
+		color: #575D6C;
+		font-size: 14px;
+		line-height: 18px
+	}
+
+	.loginStatusMessage a {
+		color: #526ECC
+	}
+
+	#quickLoginDiv {
+		width: 376px;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		background: #fff;
+		border-radius: 4px;
+		flex-direction: column;
+		padding: 32px 44px;
+		color: rgba(0, 0, 0, .5);
+		height: auto;
+	}
+
+	#quickLoginDiv .loginTypeDiv {
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 32px;
+		margin-bottom: 24px;
+		margin-top: 16px;
+		color: rgba(51, 51, 51, 1);
+	}
+
+	#quickLoginDiv .quickLoginForm {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	#quickLoginDiv .loginTip {
+		font-size: 14px;
+		font-weight: 400;
+		width: 100%;
+	}
+
+	#quickLoginDiv .inputField {
+		width: 100%;
+		margin-top: 24px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid #c3c3c3;
+		border-radius: 4px;
+		position: relative;
+	}
+
+	#quickLoginDiv .inputField .iam-input-text {
+		flex: 1;
+	}
+
+	#quickLoginDiv .quickLoginCode {
+		border: 1px solid #c3c3c3;
+		border-radius: 4px;
+		height: 48px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 24px;
+	}
+
+	#quickLoginDiv .iam-input-text {
+		border: none;
+		width: unset;
+		flex: 1;
+	}
+
+	#quickLoginDiv .quickLoginCode .quickLoginCodeBtn {
+		font-size: 14px;
+		color: rgba(82, 110, 204, 1);
+		margin-right: 16px;
+		cursor: pointer;
+	}
+
+	#quickLoginDiv .quickLoginCode .quickLoginCodeBtnDisabled {
+		color: rgba(82, 110, 204, 0.5);
+		cursor: not-allowed;
+	}
+
+	#quickLoginDiv .quickLoginCodeFocused,
+	#quickLoginDiv .inputFieldFocused {
+		border: 1px solid #000;
+	}
+
+	#quickLoginDiv .quickLoginType {
+		width: 100%;
+		margin-top: 24px;
+	}
+
+	#quickLoginDiv .quickLoginType span {
+		cursor: pointer;
+		font-size: 14px;
+		color: #526ecc;
+		line-height: 18px;
+	}
+
+	#quickLoginDiv #quickLoginBtn {
+		margin-top: 24px;
+	}
+
+	#quickLoginDiv .selectUsersTitle {
+		font-size: 24px;
+		font-weight: 400;
+		color: #333333;
+		line-height: 32px;
+		margin-top: 16px;
+	}
+
+	#quickLoginDiv .selectUsers {
+		width: 100%;
+	}
+
+	#quickLoginDiv .userOptionsContainer {
+		border: 1px solid #cccccc;
+		border-radius: 4px;
+		max-height: 120px;
+		overflow: auto;
+		margin-top: 24px;
+		margin-bottom: 32px
+	}
+
+	#quickLoginDiv .userOptionDiv {
+		height: 40px;
+		line-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#quickLoginDiv .userOptionDiv:hover {
+		background: #e6e6e6;
+	}
+
+	#quickLoginDiv .quickLoginError {
+		width: 100%;
+	}
+
+	.option-label {
+		height: 18px;
+		line-height: 18px;
+		font-size: 14px;
+		color: #000000;
+		margin-left: 15px;
+	}
+
+	.right-arrow {
+		display: inline-block;
+		position: relative;
+		width: 15px;
+		height: 10px;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	.right-arrow::after {
+		display: inline-block;
+		content: " ";
+		height: 12px;
+		width: 12px;
+		border-width: 0px 0px 1px 1px;
+		border-color: rgba(0, 0, 0, 1);
+		border-style: solid;
+		transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+		position: absolute;
+		top: 50%;
+		right: 6px;
+		margin-top: -9px;
+	}
+
+	#quickLoginDiv .inputField .input-icon-right {
+		display: flex;
+		margin-right: 20px;
+	}
+	#quickLoginDiv .inputField .icon-clear:hover,
+	#quickLoginDiv .inputFieldFocused .icon-clear {
+		display: block;
+	}
+
+	#quickLoginDiv .users-dropdown {
+		background-color: rgba(255, 255, 255, 1);
+		position: absolute;
+		top: 50px;
+		left: -1px;
+		width: 101%;
+		box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
+	}
+
+	#quickLoginDiv .users-dropdown-option {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		font-size: 14px;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	#quickLoginDiv .users-dropdown-option:hover {
+		background: #e6e6e6;
+	}
+
+	#quickLoginDiv .iam-input-error {
+		border-color: #FA2A2D;
+		background-color: #FFEEED
+	}
+
+	#quickLoginDiv .iam-input-error .iam-input-text {
+		background-color: #FFEEED
+	}
+
+	#quickLoginDiv .registerDiv {
+		margin-top: 32px;
+	}
+
+	#quickLoginDiv .registerDiv:hover {
+		cursor: pointer;
+		opacity: 1;
+		color: #526ECC
+	}
+
+	.otherLoginWays {
+		max-width: 100%;
+	}
+	#idp-login-container {
+		width: 376px;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		background: #fff;
+		border-radius: 4px;
+		flex-direction: column;
+		padding: 32px 44px;
+	}
+
+	#idp-login-container .idp-login-title {
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 32px;
+	}
+
+	#idp-login-container .idp-account-container {
+		margin-top: 32px;
+	}
+
+	#idp-login-container .idp-dropdown-container {
+		margin-top: 24px;
+	}
+
+	#idp-login-container .inputField {
+		width: 100%;
+	}
+
+	#idp-login-container #idpLoginBtn {
+		margin-top: 24px;
+	}
+
+	#idp-login-container .idp-dropdown-container {
+		color: #666;
+	}
+
+	#idp-login-container .otherLoginWaysContainer {
+		margin-top: 42%;
+	}
+
+	.dropdown {
+		font-size: 14px;
+		position: relative;
+		display: inline-block;
+		border: 1px solid #ADB0B8;
+		width: calc(100% - 2px);
+		border-radius: 4px;
+	}
+
+	.dropdown:focus {
+		border: 1px solid #000000
+	}
+
+	.dropbtn {
+		cursor: pointer;
+		height: 48px;
+		line-height: 48px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between
+	}
+
+	.dropbtn .dropbtn-txt {
+		padding-left: 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.dropbtn .dropbtn-arrow {
+		padding-right: 10px;
+		font-size: 12px
+	}
+
+	.dropbtn .dropbtn-arrow img {
+		width: 16px;
+	}
+
+	.dropdown-content {
+		position: absolute;
+		left: -1px;
+		background-color: #FFF;
+		width: 100%;
+		max-height: 200px;
+		overflow: auto;
+		border-left: 1px solid #CCCCCC;
+		border-right: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+		z-index: 2
+	}
+
+	.dropdown-content div {
+		height: 40px;
+		line-height: 40px;
+		color: #666;
+		padding-left: 10px;
+		width: calc(100% - 10px);
+		display: block;
+		cursor: pointer;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.dropdown-content div:hover {
+		background-color: rgba(199, 0, 11, .05);
+		color: #0080ff;
+	}
+
+	.dropdown-content .dropdown-splitline {
+		width: calc(100% - 10px);
+		height: 1px;
+		background-color: #DFE1E6
+	}
+
+	.dropdown-content .dropdown-option-selected {
+		background-color: #f66f6a !important;
+		color: rgb(255, 255, 255) !important;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.dropdown-content .dropdown-option-selected img {
+		height: 16px;
+		margin-right: 16px;
+	}
+
+	.dropdown-disable:focus {
+		border: 1px solid #ADB0B8;
+	}
+
+	.dropdown-disable {
+		background-color: #f3f3f3;
+	}
+
+	.dropdown-disable .dropbtn-txt {
+		color: #999;
+	}
+
+	#idpCheckArea {
+		margin-top: 24px;
+		width: 100%;
+		text-align: right;
+		color: rgba(0, 0, 0, .5);
+	}
+
+	#iamCheckArea {
+		align-self: flex-end;
+		cursor: pointer;
+		color: #c7020b;
+	}
+
+	.checkArea input {
+		display: none;
+	}
+
+	.checkArea label {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		border-radius: 2px;
+		border: 1px solid #DFE1E6;
+		position: relative;
+		cursor: pointer;
+		margin-bottom: -3px;
+		margin-right: 8px;
+	}
+
+	.checkArea label::before {
+		display: inline-block;
+		content: " ";
+		width: 7px;
+		border: 2px solid #fff;
+		height: 4px;
+		border-top: none;
+		border-right: none;
+		transform: rotate(-45deg);
+		top: 3px;
+		left: 3px;
+		position: absolute;
+		opacity: 0;
+	}
+
+	.checkArea input:checked+label {
+		background: #526ECC;
+		border: 1px solid #526ECC;
+	}
+
+	.checkArea input:checked+label::before {
+		opacity: 1;
+		transform: all 0.5s;
+	}
+	.allow_login_phone_captcha .input-group-append,.allow_login_code_captcha .input-group-append{
+	    height: 46px;
+		padding-left: 15px;
+	}
+	.allow_login_phone_captcha .input-group-append img,.allow_login_code_captcha .input-group-append img{
+	    width: 100%;
+	}
+	@media (max-width:1100px) {
+
+		#content,
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			min-width: 0
+		}
+	}
+
+	@media (max-width:768px) {
+
+		#loginAdv,
+		.QRLoginSwitchDiv {
+		    height: 45px;
+		    font-size: 14px;
+		}
+.zdlogin {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    transform: none;
+}
+	.form-group.allow_login_phone_captcha{
+		    width: calc(100% - 30px);
+		    margin-right: 15px;
+		    margin-left: 15px;
+	}
+		#content {
+			background: 0 0 !important;
+		}
+
+		#content .widthLimit {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto
+		}
+
+		#email,
+		#hwLoginDivId {
+			box-shadow: none
+		}
+
+		#hwLoginDivId,
+		.hwLoginDivMask {
+			margin-top: 20px;
+			padding-bottom: 64px
+		}
+	}
+
+	@media(max-height:770px) {
+		#loginAdv {
+			margin-top: 40px;
+		}
+
+		.loginDiv {
+			margin-top: 40px;
+		}
+	}
+
+	@media(max-height:700px) {
+		body {
+			display: block;
+		}
+	}
+
+	@media(max-width:500px) {
+		.loginDiv {
+			margin-top: 0px;
+			width: 100%;
+			height: 500px;
+			box-shadow:none;
+		}
+
+		#email,
+		.hwLoginDivMask,
+		#hwLoginDivId {
+			width: 100%;
+			padding: 0;
+		}
+
+		.hwLoginDivMask {
+			position: fixed;
+			top: 0;
+			left: 0;
+			margin: 0;
+			z-index: 10000
+		}
+
+		#loginAdv,
+		#email .otherLoginWays .otherLoginTip {
+			display: none
+		}
+
+		#content,
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			min-width: 0
+		}
+
+		#email .loginTypeDiv {
+			margin-top: 40px
+		}
+
+		.errorMsgDiv {
+			justify-content: center;
+			background-color: #fff;
+			border: 0 solid #C7020B;
+			color: #FA2A2D;
+			margin-bottom: 0
+		}
+
+		.iam-input-text {
+			border-bottom: 1px solid rgba(0, 0, 0, .2)
+		}
+
+		.iam-input-text,
+		.iam-input-text:focus {
+			border-top-width: 0;
+			border-left-width: 0;
+			border-right-width: 0;
+			-webkit-box-shadow: 0 0 0 0 #f6f6f6 inset;
+			box-shadow: 0 0 0 0 #f6f6f6 inset;
+			border-radius: 0;
+			padding: 2px
+		}
+
+		.iam-input-text::placeholder {
+			color: rgba(24, 24, 26, .6)
+		}
+
+		.inputField .iam-input-text {
+			border-radius: 0
+		}
+
+		#footer {
+			background-color: #eeefef
+		}
+
+		.iam-name-tooltip {
+			padding: 2px 0 0 2px;
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, .2);
+			border-radius: 0;
+			position: unset;
+			color: rgba(96, 97, 98, 1)
+		}
+
+		.verifyCodeContainer #verifyCode {
+			border-bottom: 1px solid #c3c3c3;
+			width: calc(100% - 30px)
+		}
+
+		#email .verifyCodeContainer .verifyCodeFocused {
+			border-bottom-color: #000
+		}
+
+		.verifyCodeContainer #verifyCode input {
+			border-width: 0
+		}
+
+		.pwdShowimg {
+			top: 16px;
+			width: 20px;
+			height: 20px
+		}
+		#email .loginFormDiv .inputField,
+		.inputField {
+			margin-bottom: 15px
+		}
+.zdjj{margin-bottom: 17px;}
+		.H5ErrorMaskDiv {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			z-index: 1001;
+			-moz-opacity: .7;
+			opacity: .7;
+			filter: alpha(opacity=70)
+		}
+
+		.H5ErrorDiv {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: calc(100% - 60px);
+			padding: 10px 20px;
+			margin: 10px;
+			background-color: #fff;
+			border-radius: 10px;
+			z-index: 1002;
+			overflow: auto
+		}
+
+		#h5BottomBtns {
+			margin-bottom: 32px;
+			margin-top: 12px;
+			margin-left: 15px;
+			font-size: 14px;
+			width: 100%;
+			color: #526ECC
+		}
+
+		#email .otherLoginWays {
+			color: #526ECC;
+			flex-direction: column;
+			justify-content: flex-end;
+			flex: 1;
+			margin-top: 50px
+		}
+
+		#email .otherLoginWays #hwAccountLinkDiv {
+			margin-bottom: 24px;
+			margin-top: 50px;
+			text-align: center
+		}
+
+		#hwLoginDivId {
+			margin-top: 40px;
+			padding: 0 15px;
+			width: auto;
+		}
+		.otherLoginWaysContainer .otherLoginWays .otherLoginTip,
+		.otherLoginWays .otherLoginTip {
+			width: 100%;
+			text-align: center;
+			position: relative;
+			line-height: 1;
+			margin-bottom: 12px;
+			display: block
+		}
+
+		.otherLoginWaysContainer .otherLoginWays .otherLoginTip:before,
+		.otherLoginWays .otherLoginTip:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: 100%;
+			border-top: 1px solid #DDD
+		}
+
+		#email .loginFormDiv,
+		.buttonAreaDiv,
+		#hwLoginDivId .loginFormDiv {
+			width: calc(100% - 30px);
+			margin-right: 15px;
+			margin-left: 15px
+		}
+
+		.otherLoginWaysContainer .otherLoginWays .otherLoginTip span,
+		.otherLoginWays .otherLoginTip span {
+			background-color: #fff;
+			padding: 0 7px;
+			position: relative
+		}
+
+		.otherLoginWaysContainer .otherLoginWays .otherLoginColor,
+		.otherLoginWays .otherLoginColor {
+			color: #526ECC
+		}
+
+		.privacyMsg {
+			margin-top: 22px;
+		}
+
+		.loginBtn span,
+		.loginBtnDisabled span {
+			height: 44px;
+			line-height: 44px;
+			font-size: 16px !important
+		}
+
+		.intervalDiv {
+			color: #DDD
+		}
+
+		#content .widthLimit {
+			height: calc(90%);
+			overflow-x: hidden
+		}
+
+		#h5BottomBtns .forgetPwdLink {
+			margin-left: 15px
+		}
+
+		#content:after {
+			padding-top: 0
+		}
+
+		#quickLoginDiv {
+			padding: 24px 16px;
+			width: auto;
+			height: calc(100% - 158px);
+		}
+
+		#quickLoginDiv .quickLoginCode,
+		#quickLoginDiv .inputField {
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			border-radius: 0px;
+		}
+
+		.h5-dropdown-container {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			background-color: rgba(0, 0, 0, .2);
+			display: flex;
+			flex-direction: column-reverse
+		}
+
+		.h5-dropdown-content {
+			width: calc(100% - 70px);
+			margin: 0 15px 15px;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 16px
+		}
+
+		.h5-dropdown-title {
+			font-size: 20px;
+			line-height: 28px;
+			height: 58px;
+			font-weight: 600
+		}
+
+		.h5-option-div {
+			display: flex;
+			height: 48px;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid #ADB0B8
+		}
+
+		.h5-option-name {
+			font-size: 16px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: calc(100% - 30px);
+		}
+
+		.h5-option-button {
+			width: 18px;
+			height: 18px;
+			border: 1px solid #526ECC;
+			vertical-align: middle;
+			border-radius: 50%
+		}
+
+		.h5-option-button-checked {
+			padding: 5px;
+			width: 9px;
+			height: 9px;
+			background-color: #526ECC;
+			background-clip: content-box
+		}
+
+		.h5-dropdown-buttons {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.h5-dropdown-cancel {
+			text-align: center;
+			font-size: 16px;
+			line-height: 22px;
+			margin-top: 36px;
+		}
+
+		.h5-dropdown-ok {
+			text-align: center;
+			font-size: 16px;
+			line-height: 22px;
+			margin-top: 36px;
+			color: #526ECC
+		}
+
+		#idp-login-container {
+			width: auto;
+			padding: 32px 16px;
+		}
+
+		#idp-login-container .dropdown {
+			border-width: 0 0 1px 0;
+			border-radius: 0;
+		}
+
+		#idp-login-container .dropbtn .dropbtn-txt {
+			padding-left: 1px;
+		}
+
+		#idp-login-container .dropbtn .dropbtn-arrow {
+			padding-right: 1px;
+		}
+
+		#idp-login-container .h5-dropdown-buttons {
+			display: flex;
+		}
+
+		#idp-login-container .otherLoginWaysContainer {
+			width: calc(100% - 32px);
+			position: fixed;
+			bottom: 16px;
+		}
+
+		#idp-login-container .otherLoginWaysContainer .otherLoginWays {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		#bottomBtns {
+			width: calc(100% - 30px);
+		}
+
+		#bottomBtns .forgetPwdLink {
+			color: #526ECC;
+		}
+	}
+
+	input,
+	textarea {
+		-webkit-appearance: none
+	}
+
+	body,
+	html {
+		-webkit-text-size-adjust: 100%;
+		-webkit-tap-highlight-color: transparent
+	}
+
+	.hwInterval {
+		margin: 0 1px;
+	}
+
+	#quickLoginDiv .otherLoginWays{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+
+	@media(max-width:500px) {
+		#hwLoginDivId .otherLoginWays.forPc {
+			display: none;
+		}
+
+		#hwLoginDivId .otherLoginWays.forMobile {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+
+		#hwLoginDivId .otherLoginWays.forMobile .loginLinkFirstLayer {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		#hwLoginDivId .otherLoginWays.forMobile .loginLinkSecondLayer {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+	}
+	
+	.logo.text-center img{width:50%;}
+	.list-inline-item .icon {
+	    width: 2.5rem;
+	    height: 2.5rem;
+	}
+	.social-list-item {
+	    border: none;
+	}
+	.input-group-prepend {
+	    width: 100px;
+	}
+	.allow_login_code_captcha{display:none;}
+	.auth-full-bg .bg-overlay {
+		background: url(/themes/clientarea/default/assets_custom/img/new-background.jpg)no-repeat left top / 100% 1400px;
+		background-size: cover;
+		opacity:1;
+	}
+	@media(max-width:768px) {
+		.allow_login_code_captcha{display:none;padding: 0 15px;}
+	}
+	
