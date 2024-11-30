@@ -130,11 +130,11 @@
                             ,success: function(e){
                                 if(e.status != 200)
                                 {
-                                    toastr.error(e.msg);
+                                    iziToast.error({title: '异常', message: e.msg});
                                     return false;
                                 }
                                 else{
-                                    toastr.success(e.msg);
+                                    iziToast.success({title: '成功', message: e.msg});
                                     location.reload();
                                 }
                             }
@@ -420,7 +420,7 @@
                             return false;
                         }
                         else{
-                            toastr.success(e.msg);
+                            iziToast.success({title: '成功', message: e.msg});
                             location.reload();
                         }
                     }
@@ -447,7 +447,7 @@
                             return false;
                         }
                         else{
-                            toastr.success(e.msg);
+                            iziToast.success({title: '成功', message: e.msg});
                             location.reload();
                         }
                     }

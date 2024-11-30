@@ -26,10 +26,16 @@
 			data: obj,
 			success: function (data) {
 				if (data.status !== 200) {
-					toastr.error(data.msg)
+					iziToast.success({
+                      title: '成功',
+                      message: data.msg,
+                    });
 					return
 				}
-				toastr.success(data.msg)
+				iziToast.success({
+                  title: '成功',
+                  message: data.msg,
+                });
 				$(`#starRating${rid}`).attr("disabled", true);
 			}
 		});
@@ -57,8 +63,8 @@
 			</h4>
 			<p class="px-3 mb-0">{$Lang.creation_time}：{$ViewTicket.ticket.create_time|date="Y-m-d H:i"}</p>
 			<div class="d-flex p-3">
-				<span class="mr-3">{$lang.work_order_department}：{$ViewTicket.ticket.department.name}</span>
-				<span>{$Lang.product}：{$ViewTicket.ticket.host}</span>
+				<span class="mr-3">对接部门：{$ViewTicket.ticket.department.name}</span>
+				{if $ViewTicket.ticket.host}<br>相关产品：{$ViewTicket.ticket.host}{/if}
 			</div>
 
 		</div>
@@ -99,6 +105,7 @@
 			{/foreach}
 		</div>
 
+		{if $ViewTicket.ticket.status.id != "4"}
 		<div class="card" id="ticketReplyContainer">
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="tid" value="{$ViewTicket.ticket.tid}" />
@@ -123,7 +130,7 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-3 col-xs-6">
-							<button type="submit" class="btn btn-primary btn-block">{$Lang.reply_work_order}</button>
+							<button type="submit" id="support" class="btn btn-primary btn-block">{$Lang.reply_work_order}</button>
 						</div>
 						<div class="col-lg-3 col-xs-6">
 							<a href="supporttickets" class="btn btn-block btn-default">{$Lang.cancel}</a>
@@ -133,6 +140,23 @@
 				</div>
 			</form>
 		</div>
+		{else}
+        <div class="card" id="ticketReplyContainer">
+            <div class="card-body">
+              <h4 class="card-title">此工单已关闭</h4>
+              <p class="card-text">此工单已关闭，您不能再在此工单发布回复。如有需要，请<a href="/submitticket">提交新工单</a>，或点击下方按钮重新开启工单。</p>
+              <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="tid" value="{$ViewTicket.ticket.tid}" />
+                <input type="hidden" name="c" value="{$ViewTicket.ticket.c}" />
+                <input type="hidden" id="content" name="content" value="用户重新开启了工单。"></input>
+                <div class="mdui-card-actions">
+                    <button type="submit" class="btn btn-primary"><i class="bx bxs-bell-plus"></i> 重新开启工单</button>
+                    <a href="/submitticket" class="btn btn-outline-secondary">提交新工单</a>
+                </div>
+              <form>
+            </div>
+        </div>
+        {/if}
 	</div>
 
 </div>
@@ -157,4 +181,21 @@
 	$('#filelist').on('click', '.deletefileBtn', function () {
 		$(this).parent('.filebox').remove()
 	});
+</script>
+
+<script>
+    function handleButtonClick() {
+        setTimeout(function() {
+            support.disabled = true;
+            iziToast.info({
+              title: '成功',
+              message: "你的回复已提交，请等待跳转",
+            });
+        }, 200);
+    }
+ 
+    document.addEventListener('DOMContentLoaded', function() {
+        var support = document.getElementById('support');
+        support.addEventListener('click', handleButtonClick);
+    });
 </script>

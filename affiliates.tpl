@@ -3,7 +3,7 @@
 		$('.activation').click(function () {
 			$.get("activation", function (data) {
 				if (data.status == '200') {
-					toastr.success(data.msg);
+					iziToast.success({title: '成功', message: data.msg});
 					setTimeout(function () {
 						location.reload();
 					}, 1000);

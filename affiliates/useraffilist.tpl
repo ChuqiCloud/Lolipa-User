@@ -31,11 +31,7 @@
 			</colgroup>
 			<thead class="bg-light">
 				<tr>
-					<th>{$Lang.user_name}
-					</th>
 					<th>{$Lang.mailbox}
-					</th>
-					<th>{$Lang.mobile_phone}
 					</th>
 					<th class="pointer" prop="create_time">{$Lang.registration_time}
 						<span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
@@ -54,9 +50,7 @@
 			<tbody>
 				{foreach $UserAffilist as $value}
 				<tr>
-					<td>{$value.username}</td>
 					<td>{$value.email}</td>
-					<td>{$value.phonenumber}</td>
 					<td>{$value.create_time|date="Y-m-d H:i"}</td>
 					<td>{$value.lastlogin|date="Y-m-d H:i"}</td>
 				</tr>

@@ -167,7 +167,7 @@
 		$('#copyBtn').on('click', function () {
 			$('#referralLink').select()
 			document.execCommand("Copy")
-			toastr.success('{$Lang.copy_succeeded}')
+			iziToast.success({title: '成功', message: '{$Lang.copy_succeeded}'});
 		});
 	});
 </script>

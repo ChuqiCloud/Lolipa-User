@@ -1,5 +1,7 @@
+
 {include file="includes/tablestyle"}
 {include file="includes/pop"}
+
 
 <script>
 	$(function () {
@@ -20,7 +22,7 @@
 			})
 
 			location.href = 'service?groupid={$Think.get.groupid}' + parmas
-		})                                                               ;
+		});
 		// 关键字搜索
 		$('#searchInp').val('{$Think.get.keywords}')
 
@@ -33,7 +35,7 @@
 		$('#searchIcon').on('click', function () {
 			location.href = 'service?groupid={$Think.get.groupid}&keywords=' + $('#searchInp').val() +
 					'&sort={$Think.get.sort}&orderby={$Think.get.orderby}&page={$Think.get.page}&limit={$Think.get.limit}'
-		})                                                                                                         ;
+		});
 		// 设置样式
 
 		// 排序
@@ -68,75 +70,6 @@
 </script>
 <div class="card">
 	<div class="card-body">
-		<div class="table-container">
-			<div class="table-header">
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item">
-						<a href="" class="nav-link ">总览</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link active" data-id="1">套餐</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link " data-id="2">站点</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link " data-id="3">SSL证书</a>
-					</li>
-					<li class="nav-item">
-						<a href="" class="nav-link " data-id="4">快捷查询</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-
-
-
-	<!--
-	当前页面统计数据未启用
-	<div class="row row-cols-1 row-cols-md-4 gx-2 gy-2">
-	<div class="col">
-    <div class="border rounded p-3">
-      <div class="d-flex align-items-center fs-4">
-        <i class="bx bx-shield-quarter"></i>
-		<span class="me-auto"> 总流量</i></span>
-      </div>
-      <h2>72,540</h2>
-    </div>
-  </div>
-  <div class="col">
-    <div class="border rounded p-3">
-      <div class="d-flex align-items-center">
-        <i class="bx bx-rocket"></i>
-        <span class="me-auto"> 总请求</span>
-      </div>
-      <h2>29.4%</h2>
-    </div>
-  </div>
-  <div class="col">
-    <div class="border rounded p-3">
-      <div class="d-flex align-items-center">
-        <i class="bx bx-station"></i>
-        <span class="me-auto"> 带宽数值</span>
-      </div>
-      <h2>56.8%</h2>
-    </div>
-  </div>
-  <div class="col">
-    <div class="border rounded p-3">
-      <div class="d-flex align-items-center">
-        <i class="bx bx-memory-card"></i>
-        <span class="me-auto"> 缓存命中率</span>
-      </div>
-      <h2>92,913</h2>
-    </div>
-  </div>
-</div>
-	</div>
-</div>
-<div class="card">
-	<div class="card-body">-->
 		<div class="table-container">
 			<div class="table-header">
 				<div class="table-filter">
@@ -203,14 +136,13 @@
 						</th>
 						<th>{$Lang.product}</th>
 						<!--<th class="pointer" prop="dedicatedip">
-<span>IP</span>
-<span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
-<i class="bx bx-caret-up"></i>
-<i class="bx bx-caret-down"></i>
-</span>
-</th>-->
-						<th>带宽峰值</th>
-						<th>流量</th>
+                            <span>IP</span>
+                            <span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
+                                <i class="bx bx-caret-up"></i>
+                                <i class="bx bx-caret-down"></i>
+                            </span>
+                        </th>-->
+						<th>IP</th>
 						<th class="pointer" prop="nextduedate">
 							<span>{$Lang.due_date}</span>
 							<span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
@@ -226,6 +158,7 @@
 								</span>
 							</th>-->
 						<th>{$Lang.cost}</th>
+						<th>{$Lang.system}</th>
 						<th>{$Lang.remarks}</th>
 						<th>{$Lang.operating}</th>
 					</tr>
@@ -237,7 +170,7 @@
 								<td>
 									<div class="custom-control custom-checkbox mb-3">
 										<input type="checkbox" class="custom-control-input row-checkbox" id="customCheck{$list.id}"
-											 data-status="{$list.domainstatus}">
+											   data-status="{$list.domainstatus}">
 										<label class="custom-control-label" for="customCheck{$list.id}"></label>
 									</div>
 								</td>
@@ -259,65 +192,35 @@
 								</td>
 								<!-- <td>{if $list.dedicatedip}{$list.dedicatedip}{else}-{/if}</td> -->
 
-								<!-- 带宽峰值 -->
 								<td>
-									NaN Mbps
-								</td>
+									{if $list.dedicatedip}
+										{if ($list.assignedips && count($list.assignedips) > 1)}
+											<span data-toggle="popover" data-trigger="hover" title="" data-html="true" data-content="
+											<button type='button' class='btn btn-primary'>{$Lang.copy}</button>
+											{foreach $list.assignedips as $item}
+											<div>{$item}</div>
+											{/foreach}
+										">
+											<span class="iptd" id="ips{$list.id}">{$list.dedicatedip} ({$list.assignedips|count}) </span>
+										</span>
+										{else}
+											<span>{$list.dedicatedip}</span>
+										{/if}
+									{else}
+										-
+									{/if}
 
-								<!-- 流量 -->
-								<td>
-									流量使用率：<span>NaN/NaNG</span>
-									<div class="progress">
-										<div class="progress-bar-striped progress-bar-animated bg-success progress-determinate" style="width: 26.3089%;"></div>
-									</div>
 								</td>
-
 								<td>
 									{if $list.cycle_desc != '一次性' && $list.cycle_desc != '免费'}
 										<span>{$list.nextduedate|date="Y-m-d"}</span>
 										{if $list.host_cancel != ''}
 											<span class="bx bxs-error-circle text-danger" data-toggle="popover" data-trigger="hover"
-												 title="{$Lang.disable_and_remove_the_product}" data-html="true"
-												 data-content="{$Lang.cancellation_time}：{$list.host_cancel.type}<br>{$Lang.cancelreason}：{$list.host_cancel.reason}"></span>
+												  title="{$Lang.disable_and_remove_the_product}" data-html="true"
+												  data-content="{$Lang.cancellation_time}：{$list.host_cancel.type}<br>{$Lang.cancelreason}：{$list.host_cancel.reason}"></span>
 										{/if}
 									{else}-
 									{/if}
-									<br>
-									<span id="remaining-days-{$list.id}"></span>
-<script>
-let dueDateString{$list.id} = "{$list.nextduedate|date='Y-m-d'}"; // 获取日期字符串
-let [year{$list.id}, month{$list.id}, day{$list.id}] = dueDateString{$list.id}.split('-').map(Number); // 解析字符串为年月日
-
-// 使用 Date(year, monthIndex, day) 构造日期对象，注意 monthIndex 从 0 开始
-let dueDate{$list.id} = new Date(year{$list.id}, month{$list.id} - 1, day{$list.id});
-
-let now{$list.id} = new Date();
-let diff{$list.id} = dueDate{$list.id}.getTime() - now{$list.id}.getTime();
-let daysRemaining{$list.id} = Math.ceil(diff{$list.id} / (1000 * 60 * 60 * 24));
-let message{$list.id} = "";
-let color{$list.id} = "";
-
-if (daysRemaining{$list.id} > 30) {
-message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
-color{$list.id} = "#27cc85";
-} else if (daysRemaining-{$list.id} > 5) {
-message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
-color{$list.id} = "orange";
-} else if (daysRemaining-{$list.id} >= 0) { // 修改这里，包含0
-message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
-color{$list.id} = "red";
-} else {
-message{$list.id} = "[" + Math.abs(daysRemaining{$list.id}) + " 天前已到期]";
-color{$list.id} = "red"; // 过期也显示红色
-}
-
-let span{$list.id} = document.getElementById("remaining-days-{$list.id}");
-span{$list.id}.innerText = message{$list.id};
-span{$list.id}.style.color = color{$list.id};
-span{$list.id}.style.fontSize = "12px"; // 添加字体大小
-span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
-
-</script>
 								</td>
 								<td>
 									<div>
@@ -335,10 +238,24 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 										{if $list.initiative_renew && $list.billingcycle != 'free' && $list.billingcycle != 'onetime'}{$Lang.automatic_renewal_of_balance}{/if}
 									</div>
 								</td>
+								<!-- 系统 -->
+								<td>
+									{if $list.os_url}
+										{if $list.svg}
+											<img width="14" height="14" src="/upload/common/system/{$list.svg}.svg" alt="">
+										{else}
+											<img width="14" height="14" src="/upload/common/system/{$list.os_url|getOsSvg}.svg"
+												 alt="">
+										{/if}
+										{$list.os_url}
+									{else}
+										-
+									{/if}
+								</td>
 								<td>{if $list.notes}{$list.notes}{else}-{/if}
 									<i class="bx bx-edit-alt pointer text-primary"
-									 onclick="editNotesHandleClick('{$list.id}', '{$list.notes}')"></i>
-									<!-- data-toggle="modal" data-target="#modifyNotesModal" -->
+									   onclick="editNotesHandleClick('{$list.id}', '{$list.notes}')"></i>
+									<!--  data-toggle="modal" data-target="#modifyNotesModal" -->
 								</td>
 								<td>
 									<a href="servicedetail?id={$list.id}" class="btn btn-sm btn-primary w-xs">{$Lang.operating}</a>
@@ -359,7 +276,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			<div class="table-footer">
 				<div class="table-tools">
 					<button disabled class="btn btn-outline-primary btn-sm w-xs" id="readBtn">{$Lang.renew}</button>
-					<!--<div class="btn-group">
+					<div class="btn-group">
 						<button class="btn btn-secondary btn-sm dropdown-toggle not-allowed" id="bulkOperation" type="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
 							{$Lang.products_launched} <i class="mdi mdi-chevron-down"></i>
@@ -371,7 +288,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 							<a class="dropdown-item" href="#" onclick="handleOperating('hard_off')">{$Lang.hard_shutdown}</a>
 							<a class="dropdown-item" href="#" onclick="handleOperating('hard_reboot')">{$Lang.hard_restart}</a>
 						</div>
-					</div>-->
+					</div>
 				</div>
 				<div class="table-pagination">
 					<div class="table-pageinfo mr-2">
@@ -399,14 +316,14 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 
 <style>
 	.dots {
-		cursor: pointer    ;
-		width: 15px        ;
-		height: 15px       ;
-		border-radius: 50% ;
-		border: 1px solid  #fff;
-		position: absolute ;
-		top: 6px           ;
-		left: 6px          ;
+		cursor: pointer;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		border: 1px solid #fff;
+		position: absolute;
+		top: 6px;
+		left: 6px;
 	}
 
 	.on_color {
@@ -430,7 +347,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 	}
 
 	.not_support_color {
-		background-color:   #2d2d2d;
+		background-color: #2d2d2d;
 	}
 </style>
 
@@ -464,7 +381,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 </div>
 
 <script>
-	var serviceList = {:json_encode($Service.list)}                                                                                                    ; // 当前页列表数据
+	var serviceList = {:json_encode($Service.list)}; // 当前页列表数据
 	$(function () {
 		if($('.row-checkbox:checked').length){
 			$('#readBtn').removeAttr('disabled').removeClass('not-allowed');
@@ -487,19 +404,19 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 				$('#readBtn').attr('disabled', 'disabled').addClass('not-allowed');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true                                                                                      ;
-			let plStatus = true                                                                                      ;
+			let xfStatus = true;
+			let plStatus = true;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false                                                                                       ;
+					xfStatus = false;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false                                                                                       ;
+					plStatus = false;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -512,7 +429,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		})                                                                                                        ;
+		});
 		$('.row-checkbox').on('change', function () {
 			$('input[name="headCheckbox"]').prop('checked', $('.row-checkbox').length === $('.row-checkbox:checked')
 					.length)
@@ -530,19 +447,19 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 				$('#bulkOperation').removeClass('not-allowed').removeAttr('disabled');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true                                                        ;
-			let plStatus = true                                                        ;
+			let xfStatus = true;
+			let plStatus = true;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false                                                         ;
+					xfStatus = false;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false                                                         ;
+					plStatus = false;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -555,7 +472,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		})                                                                          ;
+		});
 
 		$('#readBtn').on('click', function () {
 			var idArr = getCheckbox()
@@ -573,7 +490,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key]                      ;
+					const item = allCheck[key];
 					ids.push(item.id.substring(11))
 				}
 			}
@@ -587,7 +504,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key]                      ;
+					const item = allCheck[key];
 					statusArr.push($(item).attr('data-status'))
 				}
 			}
@@ -595,7 +512,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 		}
 
 		// 给当前页数据加属性
-		for (let i = 0               ; i < serviceList.length; i++) {
+		for (let i = 0; i < serviceList.length; i++) {
 			const item = serviceList[i]
 			item.loading = false
 			item.status = {
@@ -617,19 +534,19 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 		const allCheck = [...$('.row-checkbox:checked')]
 		for (const key in allCheck) {
 			if (Object.hasOwnProperty.call(allCheck, key)) {
-				const item = allCheck[key]                      ;
+				const item = allCheck[key];
 				ids.push(item.id.substring(11))
 			}
 		}
 		return ids
-	}                                                  ;
+	};
 
-	let loopStatusTimer = null                                 ; // 循环定时器
+	let loopStatusTimer = null; // 循环定时器
 	let batchObj = { // 发请求用的对象
 		id: [],
 		func: '',
 		code: ''
-	}                                                          ;
+	};
 	let tableMul = getCheckbox()
 	function handleOperating(command) { // 批量操作
 		clearInterval(loopStatusTimer)
@@ -637,7 +554,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 		batchObj.func = command
 		tableMul = getCheckbox()
 		// vue那边的逻辑，直接赋值也行，因为那边的item是row，这边的item直接就是id，所以可以直接push
-		for (let i = 0                                            ; i < tableMul.length; i++) {
+		for (let i = 0; i < tableMul.length; i++) {
 			const item = tableMul[i]
 			batchObj.id.push(item)
 		}
@@ -653,13 +570,13 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 					loopGetStatus(serviceList)
 				}
 			}
-		})                            ;
+		});
 
 		// if (this.tableData.length === 1) {
 		// 	this.tableData[0].status.data.status = 'process'
 		// }
 
-	} ;
+	};
 
 	function getStatus(items) { // 获取列表电源状态
 		const obj = {
@@ -672,7 +589,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			//return i.status?.data?.status !== 'on'
 		})
 		if (Array.isArray(items)) {
-			for (let i = 0                                        ; i < items.length; i++) {
+			for (let i = 0; i < items.length; i++) {
 				const element = items[i]
 				obj.id.push(element.id)
 			}
@@ -697,8 +614,8 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 				// let sucArr = [] // 可以正常返回状态的服务器
 				// let errArr = []	// 不支持查询状态的服务器
 				// // 把列表服务器分成能查状态的和不能查状态的
-				// for (let i = 0                                 ; i < allStatus.length; i++) {
-				// 	const item = allStatus[i]                     ;
+				// for (let i = 0; i < allStatus.length; i++) {
+				// 	const item = allStatus[i];
 				// 	if (item.status === 200) {
 				// 		sucArr.push(item)
 				// 	} else {
@@ -725,17 +642,17 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 				for (const k in data.data) {
 					const element = data.data[k]
 					if (element.status === 200) {
-						$(`                                                  #service${k}`)
+						$(`#service${k}`)
 								.show()
-								.attr('data-original-title', element.data.des)     ;
+								.attr('data-original-title', element.data.des);
 						setColor(element, k)
 
 					}
 				}
 			}
-		})   ;
+		});
 
-	} ;
+	};
 
 	function getSingleStatus(id) { // 单个查状态
 		const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
@@ -754,19 +671,19 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 
 				const result = data.data[id]
 				if (result.status === 200) {
-					$(`                                                #service${id}`)
+					$(`#service${id}`)
 							.show()
-							.attr('data-original-title', result.data.des)    ;
+							.attr('data-original-title', result.data.des);
 					$(`#service${id}`).removeClass().addClass('dots');
 					setColor(result, id)
 				}
 			}
-		})                                                    ;
-	}                                                      ;
+		});
+	};
 
 	function setColor(item, id) {
-		//console.log('id: ', id)                                                                                                 ;
-		//console.log('item: ', item.data.status)                                                                                 ;
+		//console.log('id: ', id);
+		//console.log('item: ', item.data.status);
 		if (item.data.status === 'on') {
 			$(`#service${id}`).removeClass().addClass('dots on_color').html('');
 		} else if (item.data.status === 'off') {
@@ -777,7 +694,7 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
 			$(`#service${id}`).removeClass().addClass('dots ing_color').html(loadingIcon);
 		}
-	}                                                                                                                          ;
+	};
 
 	function loopGetStatus(items) { // 循环5分钟
 		if (loopStatusTimer !== null) { // 如果不是初始值，则恢复成初始值
@@ -794,7 +711,9 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 			getStatus(serviceList)
 			endTime += 15
 		}, 15 * 1000)
-	}                                                   ;
+	};
+
+
 
 	// 修改备注
 	var rowId = 0
@@ -816,24 +735,25 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 				$('#modifyNotesModal').modal('hide')
 				location.reload()
 			}
-		})                                               ;
-	})                                                ;
+		});
+	});
+
 
 </script>
 
 <script src="/themes/clientarea/default/assets/libs/clipboard/clipboard.min.js?v={$Ver}"></script>
 <script>
 	// var clipboard = null
-	// var ips = {:json_encode($Service.list)}                                                        ;
-	// // console.log('ips: ', ips)                                                                   ;
+	// var ips = {:json_encode($Service.list)};
+	// // console.log('ips: ', ips);
 	// $(document).on('mouseover', '.iptd', function () {
-	// $('#popModal').modal('show')
-	// $('#popTitle').text('IP地址')
-	// if (clipboard) {
-	// clipboard.destroy()
+	//   $('#popModal').modal('show')
+	//   $('#popTitle').text('IP地址')
+	//   if (clipboard) {
+	//     clipboard.destroy()
 	// 	}
 
-	// ips.forEach(function(item, index) {
+	//   ips.forEach(function(item, index)  {
 	// 		if (item.dedicatedip && item.assignedips && $(this).attr('id') == ('ips'+item.id)) {
 	// 			var ipbox = `
 	// 				<div class="text-right text-primary mb-2 pointer" id="copyip${item.id}" data-clipboard-action="copy" data-clipboard-target="#ippopbox${item.id}">复制</div>
@@ -851,18 +771,19 @@ span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
 
 	// 			// 复制
 	// 			clipboard = new ClipboardJS('#copyip'+item.id, {
-	// text: function (trigger) {
-	// return $('#ippopbox'+item.id).text()
-	// },
-	// container: document.getElementById('popModal')
-	// })                                                  ;
-	// clipboard.on('success', function (e) {
-	// toastr.success('{$Lang.copy_succeeded}');
-	// })
+	//         text: function (trigger) {
+	//           return $('#ippopbox'+item.id).text()
+	//         },
+	//         container: document.getElementById('popModal')
+	//       });
+	//       clipboard.on('success', function (e) {
+	//         toastr.success('{$Lang.copy_succeeded}');
+	//       })
 	// 		}
 
-	// })
+	//   })
 
-	// }) ;
+
+	// });
 
 </script>

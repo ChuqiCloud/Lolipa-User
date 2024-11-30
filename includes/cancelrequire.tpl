@@ -93,12 +93,12 @@
         data: $('.cancelrequire form').serialize(),
         success: function (data) {
           if (data.status == '200') {
-            toastr.success(data.msg);
+            iziToast.success({title: '成功', message: data.msg});
             setTimeout(function () {
               window.location.reload();
             }, 1000)
           } else {
-            toastr.error(data.msg);
+            iziToast.error({title: '异常', message: data.msg});
           }
         }
       });

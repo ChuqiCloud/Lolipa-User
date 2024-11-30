@@ -684,7 +684,7 @@ body[data-sidebar="dark"].vertical-collpsed .vertical-menu #sidebar-menu ul li.m
   color: #ffffff !important;
 }
 body[data-sidebar="dark"].vertical-collpsed .vertical-menu #sidebar-menu ul li.mm-active .active i {
-  color: #ffffff !important;
+  /* color: #ffffff !important;*/
 }
 
 body[data-sidebar="dark"] .mm-active {

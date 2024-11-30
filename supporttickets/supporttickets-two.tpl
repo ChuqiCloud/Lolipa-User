@@ -114,7 +114,7 @@
 											</div>
 											<div class="col-6 col-sm-3">
 												<div class="form-group">
-													<button type="submit" class="btn btn-primary btn-block submitBtn">
+													<button type="submit" id="support" class="btn btn-primary btn-block submitBtn">
 														<span>{$Lang.submit_work_order}</span>
 													</button>
 												</div>
@@ -183,4 +183,18 @@
 		})										
 		
 	})
+</script>
+<script>
+    function handleButtonClick() {
+          iziToast.info({title: '提交中', message: '请勿反复点击'});
+        setTimeout(function() {
+            support.disabled = true;
+            iziToast.success({title: '成功', message: '你的回复已提交，请等待跳转'});
+        }, 200);
+    }
+ 
+    document.addEventListener('DOMContentLoaded', function() {
+        var support = document.getElementById('support');
+        support.addEventListener('click', handleButtonClick);
+    });
 </script>

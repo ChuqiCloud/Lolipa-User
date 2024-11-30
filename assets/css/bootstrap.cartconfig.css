@@ -65,7 +65,7 @@ section {
 body {
 	margin: 0;
 	font-family: "Helvetica", "SourceHanSans";
-	font-size: 12px;
+	font-size: 0.8125rem;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #495057;
@@ -760,6 +760,7 @@ pre code {
 	-ms-flex: 0 0 8.33333%;
 	flex: 0 0 8.33333%;
 	max-width: 8.33333%;
+	border-width: 0px !important;
 }
 
 .col-2 {
@@ -2417,9 +2418,9 @@ pre code {
 	}
 
 	.btn-custom-group .active {
-	background-color: #fbcbcb;
-    color: #ff4343;
-    border-color: #ff6666;
+	    color: #0008ff !important;
+    background-image: linear-gradient(270deg,#f3f3ff,#f3f3ff);
+    border-color: #0008ff;
 	}
 	.btn-custom:hover{
 		color: #0080ff;
@@ -2491,21 +2492,25 @@ pre code {
 /* height:35px !important; */
 .form-control {
 	display: block;
-	width: 100%;
-	padding: 0.47rem 0.75rem;
-	font-size: 0.8125rem;
-	font-weight: 400;
-	line-height:35px;
-	color: #495057;
-	background-color: #fff;
-	background-clip: padding-box;
-	border-radius: 0;
-	-webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-	transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    width: 100%;
+    padding: 0.47rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 35px;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    border-style: solid;
+    border-width: 1px;
+    height: 35px;
+    border-color: #0008ff;
 }
-.configoption_os{margin-left: -6px;}
+.configoption_os{/*margin-left: -6px;*/}
 .configoption_os option{height: 35px !important;}
 @media (prefers-reduced-motion: reduce) {
 	.form-control {
@@ -3128,9 +3133,9 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
-	background-color: #fbcbcb;
-    color: #ff4343;
-    border-color: #ff6666;
+	color: #0008ff;
+    background-image: linear-gradient(270deg,#f3f3ff,#f3f3ff);
+    border-color: #0008ff;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -3957,11 +3962,11 @@ input[type="submit"].btn-block {
 }
 
 .configoption_total button{
-    width: 100%;
-    background-color: #fbcbcb;
-    color: #ff4343;
-    border-color: #ff6666;
-    font-size: 14px;}
+	width: 100%;
+    color: #fff;
+    font-size: 14px;
+	background-color: #3860f5;
+}
 .configoption_total .text-sm-right{position: relative !important; bottom: 10px !important;left: 0;}
 
 
@@ -11903,7 +11908,8 @@ button.bg-pink:hover {
 }
 
 .text-primary {
-	color: #FF6600 !important;
+	    /* color: #FF6600 !important; */
+		margin: 0 8px 0 8px;
 }
 a.text-primary:focus,
 a.text-primary:hover {
@@ -12531,6 +12537,7 @@ display: none;
     font-size: 12px;
     float: right;
     height: 4rem;
+    margin: 0 -5% 0 0;
 }
 .configoption_range_val {
     max-width:100%;
@@ -12710,3 +12717,11 @@ span.number-control-down {
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
+/*又是屎山代码*/
+.mobile-bottom-total .total {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ff6f00;
+    margin: 0 0 0 5%;
+    float: left;
+}

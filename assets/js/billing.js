@@ -74,7 +74,7 @@ function prepayment () {
         url: url,
         success: function (data) {
             if (data.status !== 200) {
-                toastr.error(data.msg)
+                iziToast.error({title: '异常', message: data.msg})
             } else {
                 // 会返回账单id，之后就是付款逻辑，付款不允许信用额支付
                 payamount(data.invoiceid)

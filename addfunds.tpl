@@ -17,6 +17,17 @@
 			</div>
 		</div>
 		<div method="post">
+		
+		{if $Userinfo.user.certifi.status == 2}
+            <div class="app-expense-alert">
+                <span class="app-expense-alert__decoration">
+                <i class="app-expense-icon app-expense-icon-infoblue" role="img" aria-label="infoblue"></i>
+                </span>
+                <div class="app-expense-alert__info">
+                禁止未实名用户充值，请实名认证后再充值。<a href="verified" class="btn btn-sm btn-primary"><i class="bx bx-paper-plane"></i>{$Lang.real_name_authentications}</a>
+                </div>
+            </div>
+        {else}
 			<div class="form-group row mb-4 align-items-center">
 				<label for="horizontal-firstname-input" class="col-sm-1 col-form-label">{$Lang.current_balance}</label>
 				<div class="col-sm-9">
@@ -59,6 +70,7 @@
 					<button type="button"  class="btn btn-primary btn-block pay-now-btn" style="width: auto;" onclick="formSubmitBtn();return false;">{$Lang.confirm_recharge}</button>
 				</div>
 			</div>
+		{/if}
 		</div>
 	</div>
 </div>

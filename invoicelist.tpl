@@ -305,7 +305,7 @@ fn.apply(this, arguments) // 把参数传进去
 	success: function (data) {
 
 	if (data.status === 1001) {
-	toastr.success(data.msg);
+	iziToast.success({title: '成功', message: data.msg});
 	location.replace('/invoicelist?action=invoiceapply')
 	} else {
 

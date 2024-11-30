@@ -45,6 +45,12 @@
         </div>
         <div class="col-sm-4 col-12">
           <div class="form-group">
+            <label for="formrow-firstname-input">用户ID</label>
+            <input type="text" class="form-control" value="{$Userinfo.user.id}" placeholder="用户唯一ID标记" readonly>
+          </div>
+        </div>
+        <div class="col-sm-4 col-12">
+          <div class="form-group">
             <label for="formrow-firstname-input">{$Lang.corporate_name}</label>
             <input type="text" class="form-control" name="companyname" value="{$Userinfo.user.companyname}"
               placeholder="{$Lang.please_enter_company_name}">

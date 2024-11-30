@@ -103,7 +103,7 @@ function modifyPwdApi (type, code) {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 setTimeout(function () {
                     location.href = _url + '/login';
                 }, 2000);
@@ -112,7 +112,7 @@ function modifyPwdApi (type, code) {
                     $('#allow_setpwd_captcha').click()
                 else
                     $('#allow_resetpwd_captcha').click()
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -151,11 +151,11 @@ function bindPhoneCheckForm () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#bindPhoneModal').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -215,7 +215,7 @@ function bindPhoneChangeApi (tel, code, modalType) {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#bindPhoneChangeModal1').modal('hide')
                 // phoneType
                 if (modalType == 1) {
@@ -229,7 +229,7 @@ function bindPhoneChangeApi (tel, code, modalType) {
                 }
 
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -256,11 +256,11 @@ function loginSmsReminderCheckForm () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#loginSmsReminderModal').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -274,11 +274,11 @@ function smsSubmitOpenBtn () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#loginSmsReminderModalOpen').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -313,11 +313,11 @@ function bindEmailHandleCheckForm () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#bindEmailHandleModal').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -375,7 +375,7 @@ function changeEmailHandleApi (email, code, modalType) {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#changeEmailHandleModal1').modal('hide')
 
                 if (emailType == 0) {
@@ -389,7 +389,7 @@ function changeEmailHandleApi (email, code, modalType) {
                 }
 
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -416,11 +416,11 @@ function loginEmailReminderCheckForm () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#loginEmailReminderModal').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -435,11 +435,11 @@ function loginEmailReminderSubmitOpen () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#loginEmailReminderModalOpen').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -469,11 +469,11 @@ function closeSecond (type, code) {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#toggleSecondVerifyModal').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -488,11 +488,11 @@ function toggleSecondVerifySubmitOpen () {
         beforeSend: function () { },
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 $('#toggleSecondVerifyModalOpen').modal('hide')
                 location.reload()
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -560,7 +560,7 @@ function getapiModalCheckForm () {
                             $('#accountbind-form').html(msg)
                            
                         } else {
-                            toastr.error(data.msg);
+                            iziToast.error({title: '异常', message: data.msg});
                         }
                         
                     }
@@ -570,7 +570,7 @@ function getapiModalCheckForm () {
                
 
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
         }
     });
@@ -632,10 +632,10 @@ function getCheckCode (action, name, button, method = "get", type, modal, captch
         data: formData,
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 setCutdown("." + button);
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
                 //clearInterval(timer)
                 $("." + button).text('获取验证码')
                 $("." + button).removeAttr('disabled')
@@ -703,7 +703,7 @@ function cpBtn () {
     $('#copy-apiss').attr('type', 'text')
     $('#copy-apiss').select()
     document.execCommand("Copy")
-    toastr.success('复制成功')
+    iziToast.success({title: '成功', message: '复制成功'});
     $('#copy-apiss').attr('type', strType);
 }
 
@@ -752,7 +752,7 @@ function showInterflowlicenseHandleClick () {
                 $('#accountbind-form .form-group').eq(0).hide()
                 $('#interflowModal').modal('show');
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
             }
             isCheckOpen()
             checkData()

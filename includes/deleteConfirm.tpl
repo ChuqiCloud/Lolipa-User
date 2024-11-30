@@ -52,11 +52,11 @@
 				},
 				success: function (data) {
 					if (data.status == '200') {
-						toastr.success(data.msg);
+						iziToast.success({title: '成功', message: data.msg});
 						
 						location.reload()
 					} else {
-						toastr.error(data.msg);
+						iziToast.error({title: '异常', message: data.msg});
 					}
 				}
 			});

@@ -359,7 +359,7 @@
         $(".pdfdownload").show();
         $(".printicon").show();
       }, 100);
-      toastr.success('{$Lang.please_wait_while_building}...')
+      iziToast.error({title: '成功', message: '{$Lang.please_wait_while_building}...'});
       html2canvas(document.getElementById('pdfCentent'), {
         allowTaint: true
       }).then(function (canvas) {

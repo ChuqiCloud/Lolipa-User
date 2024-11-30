@@ -53,8 +53,8 @@
 <script>
 
 var url = window.location.href;
-if (url = "https://cloud.lolipa.cn/[url]") {
-    window.location.href ="https://cloud.lolipa.cn/login";
+if (url = "https://chuqiyun.com/[url]") {
+    window.location.href ="https://chuqiyun.com/login";
 }
 
 </script>

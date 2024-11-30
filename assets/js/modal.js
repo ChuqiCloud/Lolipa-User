@@ -58,7 +58,7 @@ function getModal (action, title, text, data, callback) {
             success: function (data) {
                 _this.html(text);
                 if (data.status == '200') {
-                    toastr.success(data.msg);
+                    iziToast.success({title: '成功', message: data.msg});
                     //layer.closeAll();
                     setTimeout(function () {
                         if (action == 'modify_password') {
@@ -71,7 +71,7 @@ function getModal (action, title, text, data, callback) {
                         }
                     }, 2000);
                 } else {
-                    toastr.error(data.msg);
+                    iziToast.error({title: '异常', message: data.msg});
                 }
             },
             error: function () {
@@ -154,10 +154,10 @@ function getSecurityCode (action, username, password) {
         dataType: 'json',
         success: function (data) {
             if (data.status == '200') {
-                toastr.success(data.msg);
+                iziToast.success({title: '成功', message: data.msg});
                 setCutdown('#secondCode');
             } else {
-                toastr.error(data.msg);
+                iziToast.error({title: '异常', message: data.msg});
                 $('#secondCode').removeAttr('disabled')
                 $('#secondCode').removeData('disabled')
             }

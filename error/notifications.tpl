@@ -1,6 +1,9 @@
 <script type="text/javascript">
 	$(function () {
-		toastr.success('[value]');
+		iziToast.success({
+          title: '成功',
+          message: '[value]',
+        });
 		setTimeout(function () {
 			var url = '[url]'
 			if (url) {

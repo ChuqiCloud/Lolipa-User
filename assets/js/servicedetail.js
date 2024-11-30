@@ -144,7 +144,7 @@ function service_module_button (_this, id, host_data_type) {
                   buyReinstallTimes(id);
                 });
               } else {
-                toastr.error(res.msg);
+                iziToast.error({title: '异常', message: res.msg});;
               }
               _this.removeData('submit')
             },
@@ -177,11 +177,11 @@ function service_module_button (_this, id, host_data_type) {
             if (typeof res.data != 'undefined' && typeof res.data.url != 'undefined') {
               window.open(res.data.url);
             } else {
-              toastr.success(res.msg);
+              iziToast.success({title: '成功', message: res.msg});;
               refreashPowerStatusCycle(id)
             }
           } else {
-            toastr.error(res.msg);
+            iziToast.error({title: '异常', message: res.msg});;
           }
           $('#secondVerifyModal').modal('hide')
           $('#confirmModal').modal('hide')
@@ -216,10 +216,10 @@ function service_module_button (_this, id, host_data_type) {
           if (typeof res.data != 'undefined' && typeof res.data.url != 'undefined') {
             window.open(res.data.url);
           } else {
-            toastr.success(res.msg);
+            iziToast.success({title: '成功', message: res.msg});;
           }
         } else {
-          toastr.error(res.msg);
+          iziToast.error({title: '异常', message: res.msg});;
         }
       }
     })
@@ -254,10 +254,10 @@ function moduleResetPass (_this) {
               _this.html(text);
               if (res.status == 200) {
                 $('#moduleResetPass').modal('hide')
-                toastr.success(res.msg);
+                iziToast.success({title: '成功', message: res.msg});;
                 refreashPowerStatusCycle($('#moduleResetPass input[name="id"]').val())
               } else {
-                toastr.error(res.msg);
+                iziToast.error({title: '异常', message: res.msg});;
               }
               // TODO 刷新电源状态
               _this.removeData('submit')
@@ -291,10 +291,10 @@ function moduleResetPass (_this) {
           success: function (res) {
             if (res.status == 200) {
               $('#moduleResetPass').modal('hide')
-              toastr.success(res.msg);
+              iziToast.success({title: '成功', message: res.msg});;
               refreashPowerStatusCycle($('#moduleResetPass input[name="id"]').val())
             } else {
-              toastr.error(res.msg);
+              iziToast.error({title: '异常', message: res.msg});;
             }
             // TODO 刷新电源状态
             _this.removeData('submit')
@@ -509,10 +509,10 @@ function moduleReinstall (_this) {
         success: function (res) {
           if (res.status == 200) {
             $('#moduleReinstall').modal('hide')
-            toastr.success(res.msg);
+            iziToast.success({title: '成功', message: res.msg});;
             refreashPowerStatusCycle($('#moduleReinstall input[name="id"]').val())
           } else {
-            toastr.error(res.msg);
+            iziToast.error({title: '异常', message: res.msg});;
             if (typeof res.price != 'undefined') {
               $('#moduleReinstall').modal('hide')
             }
@@ -564,9 +564,9 @@ function buyReinstallTimes (id) {
       if (res.status == 200) {
         window.open(setting_web_url + "/viewbilling?id=" + res.data.invoiceid, "_blank");
       } else if (res.status == 1001) {
-        toastr.success(res.msg)
+        iziToast.success({title: '成功', message: res.msg});
       } else {
-        toastr.error(res.msg)
+        iziToast.error({title: '异常', message: res.msg});
       }
     },
     error: function () {
@@ -665,7 +665,7 @@ function getNewStatus (id) {
     data: { id: id, func: 'status' },
     success: function (data) {
       if (data.status != 200) {
-        toastr.error(data.msg)
+        iziToast.error({title: '异常', message: data.msg})
       } else {
         $('#ipAddress').text(data.data.ip || '-')
         $('#validDomain').text(data.data.domain)
@@ -683,10 +683,10 @@ function resetAuth (id) {
     data: { id: id, func: 'resetLicense' },
     success: function (data) {
       if (data.status !== 200) {
-        toastr.error(data.msg)
+        iziToast.error({title: '异常', message: data.msg})
         return
       }
-      toastr.success(data.msg)
+      iziToast.success({title: '成功', message: data.msg})
 
       location.reload()
     }
@@ -710,10 +710,11 @@ function cancelStop (cancelType, id) {
       },
       success: function (res) {
         if (res.status == 200) {
-          toastr.success(res.msg)
+          iziToast.success({title: '成功', message: res.msg});
+          iziToast.success({title: '成功', message: res.msg});
           location.reload()
         } else {
-          toastr.error(res.msg)
+          iziToast.error({title: '异常', message: res.msg});
         }
 
       }
@@ -738,10 +739,10 @@ function automaticRenewal (id) {
     success: function (data) {
 
       if (data.status !== 200) {
-        toastr.error(data.msg)
+        iziToast.error({title: '异常', message: data.msg})
         return
       }
-      toastr.success(data.msg)
+      iziToast.success({title: '成功', message: data.msg})
     }
   });
 }
@@ -767,11 +768,11 @@ function dcim_service_module_button (_this, id) {
         },
         success: function (res) {
           if (res.status == 200) {
-            toastr.success(res.msg)
+            iziToast.success({title: '成功', message: res.msg});
             // TODO 刷新电源状态
             refreashPowerStatusCycle(id)
           } else {
-            toastr.error(res.msg)
+            iziToast.error({title: '异常', message: res.msg});
           }
           $('#secondVerifyModal').modal('hide')
           $('#confirmModal').modal('hide')
@@ -797,11 +798,11 @@ function dcim_service_module_button (_this, id) {
     //       },
     //       success: function (res) {
     //         if (res.status == 200) {
-    //           toastr.success(res.msg)
+    //           iziToast.success({title: '成功', message: res.msg});
     //           // TODO 刷新电源状态
     //           refreashPowerStatusCycle(id)
     //         } else {
-    //           toastr.error(res.msg)
+    //           iziToast.error({title: '异常', message: res.msg});
     //         }
     //         $('#confirmModal').modal('hide')
     //       }
@@ -842,11 +843,11 @@ function dcim_service_module_button (_this, id) {
             },
             success: function (res) {
               if (res.status == 200) {
-                //toastr.success(res.msg)
+                //iziToast.success({title: '成功', message: res.msg});
                 window.open(setting_web_url + "/dcim/download?name=" + res.name + "&token=" + res.token, '_parent', 'width=200,height=100,menubar=no,toolbar=no');
                 refreashPowerStatusCycle(id)
               } else {
-                toastr.error(res.msg)
+                iziToast.error({title: '异常', message: res.msg});
               }
               _this.removeData('submit')
             }
@@ -876,11 +877,11 @@ function dcim_service_module_button (_this, id) {
             success: function (res) {
               _this.removeData('submit')
               if (res.status == 200) {
-                //toastr.success(res.msg)
+                //iziToast.success({title: '成功', message: res.msg});
                 window.open(setting_web_url + "/dcim/novnc?password=" + res.data.password + "&url=" + res.data.url + '&id=' + id + '&type=dcim', '_blank', 'width=1280,height=680,menubar=no,toolbar=no');
                 refreashPowerStatusCycle(id)
               } else {
-                toastr.error(res.msg)
+                iziToast.error({title: '异常', message: res.msg});
               }
             }
           })
@@ -1026,11 +1027,11 @@ function dcimModuleResetPass (_this, id) {
             _this.removeData('submit')
             if (res.status == 200) {
               $('#dcimModuleResetPass').modal('hide')
-              toastr.success(res.msg)
+              iziToast.success({title: '成功', message: res.msg});
               // getResintallStatus(id)预防页面刷新过程中唤起取消操作提示内容被刷新掉的情况
               refreashPowerStatusCycle(id)
             } else {
-              toastr.error(res.msg)
+              iziToast.error({title: '异常', message: res.msg});
             }
           },
           error: function () {
@@ -1067,11 +1068,11 @@ function dcimModuleRescue (_this, id) {
           _this.removeData('submit')
           if (res.status == 200) {
             $('#dcimModuleRescue').modal('hide')
-            toastr.success(res.msg)
+            iziToast.success({title: '成功', message: res.msg});
             // getResintallStatus(id); 预防页面刷新过程中唤起取消操作提示内容被刷新掉的情况
             refreashPowerStatusCycle(id)
           } else {
-            toastr.error(res.msg)
+            iziToast.error({title: '异常', message: res.msg});
           }
         },
         error: function () {
@@ -1115,7 +1116,7 @@ function dcimModuleReinstall (_this, id) {
             _this.removeData('submit')
             if (res.status == 200) {
               $('#dcimModuleReinstall').modal('hide')
-              toastr.success(res.msg)
+              iziToast.success({title: '成功', message: res.msg});
               // getResintallStatus(id);预防页面刷新过程中唤起取消操作提示内容被刷新掉的情况
               refreashPowerStatusCycle(id)
             } else {
@@ -1127,7 +1128,7 @@ function dcimModuleReinstall (_this, id) {
                 // 唤起支付
 
               } else {
-                toastr.error(res.msg)
+                iziToast.error({title: '异常', message: res.msg});
               }
             }
           },
@@ -1229,13 +1230,13 @@ function cancelDcimTask (id) {
       },
       success: function (res) {
         if (res.status == 200) {
-          toastr.success(res.msg)
+          iziToast.success({title: '成功', message: res.msg});
           $('#cancelDcimTask').hide();
           $('#confirmModal').modal('hide')
           clearInterval(getResintallStatusTimer);
           dcimGetPowerStatus(id);
         } else {
-          toastr.error(res.msg)
+          iziToast.error({title: '异常', message: res.msg});
         }
       }
     })
@@ -1314,7 +1315,7 @@ function dcimGetPowerStatus (id) {
     data: { id: id },
     success: function (data) {
       if (data.status != 200) {
-        toastr.error(data.msg)
+        iziToast.error({title: '异常', message: data.msg})
         $('#powerStatusIcon').attr('data-content', data.msg)
         $('#powerStatusIcon').removeClass()
         $('#powerStatusIcon').addClass('sprite unknown')
@@ -1363,7 +1364,7 @@ function modifyRemarkSubmit (serverid) {
     },
     dataType: "json",
     success: function (data) {
-      toastr.success(data.msg);
+      iziToast.success({title: '成功', message: data.msg});
       $('#modifyRemarkModal').modal('hide')
       location.reload()
     }

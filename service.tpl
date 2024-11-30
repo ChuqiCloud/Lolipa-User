@@ -9,9 +9,9 @@
 		var parmas = []
 		var urlParams = '{:implode(',', $Think.get.domain_status)}';
 		var statusSelected = urlParams.split(',')
-    if(!statusSelected[0]){
-      statusSelected=['Pending','Active','Suspended']
-    }
+if(!statusSelected[0]){
+statusSelected=['Pending','Active','Suspended']
+}
 
 		$('#statusSel').selectpicker('val', statusSelected)
 		$('#statusSel').on('change', function () {
@@ -22,7 +22,7 @@
 			})
 
 			location.href = 'service?groupid={$Think.get.groupid}' + parmas
-		});
+		})                                                                                                                                                               ;
 		// 关键字搜索
 		$('#searchInp').val('{$Think.get.keywords}')
 
@@ -35,7 +35,7 @@
 		$('#searchIcon').on('click', function () {
 			location.href = 'service?groupid={$Think.get.groupid}&keywords=' + $('#searchInp').val() +
 				'&sort={$Think.get.sort}&orderby={$Think.get.orderby}&page={$Think.get.page}&limit={$Think.get.limit}'
-		});
+		})                                                                                                                                                               ;
 		// 设置样式
 
 		// 排序
@@ -237,6 +237,42 @@
 								{/if}
 								{else}-
 								{/if}
+								<br>
+									<span id="remaining-days"></span>
+<script>
+let dueDateString = "{$list.nextduedate|date='Y-m-d'}"; // 获取日期字符串
+let [year, month, day] = dueDateString.split('-').map(Number); // 解析字符串为年月日
+
+// 使用 Date(year, monthIndex, day) 构造日期对象，注意 monthIndex 从 0 开始
+let dueDate = new Date(year, month - 1, day)                                                                                                                       ;
+
+let now = new Date()                                                                                                                                               ;
+let diff = dueDate.getTime() - now.getTime()                                                                                                                       ;
+let daysRemaining = Math.ceil(diff / (1000 * 60 * 60 * 24))                                                                                                        ;
+let message = "";
+let color = "";
+
+if (daysRemaining > 30) {
+message = "[剩余 " + daysRemaining + " 天到期]";
+color = "#27cc85";
+} else if (daysRemaining > 5) {
+message = "[剩余 " + daysRemaining + " 天到期]";
+color = "orange";
+} else if (daysRemaining >= 0) { // 修改这里，包含0
+message = "[剩余 " + daysRemaining + " 天到期]";
+color = "red";
+} else {
+message = "[" + Math.abs(daysRemaining) + " 天前已到期]";
+color = "red"; // 过期也显示红色
+}
+
+let span = document.getElementById("remaining-days");
+span.innerText = message                                                                                                                                           ;
+span.style.color = color
+span.style.fontSize = "12px"; // 添加字体大小
+span.style.fontWeight = "500"; // 添加字体粗细                                                                                                                           ;
+
+</script>
 							</td>
 							<td>
 								<div>
@@ -267,7 +303,7 @@
 							<td>{if $list.notes}{$list.notes}{else}-{/if}
 								<i class="bx bx-edit-alt pointer text-primary"
 									onclick="editNotesHandleClick('{$list.id}', '{$list.notes}')"></i>
-								<!--  data-toggle="modal" data-target="#modifyNotesModal" -->
+								<!-- data-toggle="modal" data-target="#modifyNotesModal" -->
 							</td>
 							<td>
 								<a href="servicedetail?id={$list.id}" class="btn btn-sm btn-primary w-xs">{$Lang.operating}</a>
@@ -328,38 +364,38 @@
 
 <style>
 	.dots {
-		cursor: pointer;
-		width: 15px;
-		height: 15px;
-		border-radius: 50%;
-		border: 1px solid #fff;
-		position: absolute;
-		top: 6px;
-		left: 6px;
+		cursor: pointer                                                                                                                                                  ;
+		width: 15px                                                                                                                                                      ;
+		height: 15px                                                                                                                                                     ;
+		border-radius: 50%                                                                                                                                               ;
+		border: 1px solid                                                                                                                                                #fff;
+		position: absolute                                                                                                                                               ;
+		top: 6px                                                                                                                                                         ;
+		left: 6px                                                                                                                                                        ;
 	}
 
 	.on_color {
-		background-color: #3fbf70;
+		background-color:                                                                                                                                                #3fbf70;
 	}
 
 	.ing_color {
-		background-color: #f5f5f5;
+		background-color:                                                                                                                                                #f5f5f5;
 	}
 
 	.off_color {
-		background-color: #e31519;
+		background-color:                                                                                                                                                #e31519;
 	}
 
 	.unknown_color {
-		background-color: #c0c0c0;
+		background-color:                                                                                                                                                #c0c0c0;
 	}
 
 	.error_color {
-		background-color: #959799;
+		background-color:                                                                                                                                                #959799;
 	}
 
 	.not_support_color {
-		background-color: #2d2d2d;
+		background-color:                                                                                                                                                #2d2d2d;
 	}
 </style>
 
@@ -393,7 +429,7 @@
 </div>
 
 <script>
-	var serviceList = {:json_encode($Service.list)}; // 当前页列表数据
+	var serviceList = {:json_encode($Service.list)}                                                                                                                   ; // 当前页列表数据
 	$(function () {
 		if($('.row-checkbox:checked').length){
 			$('#readBtn').removeAttr('disabled').removeClass('not-allowed');
@@ -416,19 +452,19 @@
 				$('#readBtn').attr('disabled', 'disabled').addClass('not-allowed');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true;
-			let plStatus = true;
+			let xfStatus = true                                                                                                                                             ;
+			let plStatus = true                                                                                                                                             ;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false;
+					xfStatus = false                                                                                                                                              ;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false;
+					plStatus = false                                                                                                                                              ;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -441,7 +477,7 @@
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		});
+		})                                                                                                                                                               ;
 		$('.row-checkbox').on('change', function () {
 			$('input[name="headCheckbox"]').prop('checked', $('.row-checkbox').length === $('.row-checkbox:checked')
 				.length)
@@ -459,19 +495,19 @@
 				$('#bulkOperation').removeClass('not-allowed').removeAttr('disabled');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true;
-			let plStatus = true;
+			let xfStatus = true                                                                                                                                             ;
+			let plStatus = true                                                                                                                                             ;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false;
+					xfStatus = false                                                                                                                                              ;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false;
+					plStatus = false                                                                                                                                              ;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -484,7 +520,7 @@
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		});
+		})                                                                                                                                                               ;
 
 		$('#readBtn').on('click', function () {
 			var idArr = getCheckbox()
@@ -502,7 +538,7 @@
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key];
+					const item = allCheck[key]                                                                                                                                    ;
 					ids.push(item.id.substring(11))
 				}
 			}
@@ -516,7 +552,7 @@
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key];
+					const item = allCheck[key]                                                                                                                                    ;
 					statusArr.push($(item).attr('data-status'))
 				}
 			}
@@ -524,7 +560,7 @@
 		}
 
 		// 给当前页数据加属性
-		for (let i = 0; i < serviceList.length; i++) {
+		for (let i = 0                                                                                                                                                   ; i < serviceList.length; i++) {
 			const item = serviceList[i]
 			item.loading = false
 			item.status = {
@@ -546,19 +582,19 @@
 		const allCheck = [...$('.row-checkbox:checked')]
 		for (const key in allCheck) {
 			if (Object.hasOwnProperty.call(allCheck, key)) {
-				const item = allCheck[key];
+				const item = allCheck[key]                                                                                                                                     ;
 				ids.push(item.id.substring(11))
 			}
 		}
 		return ids
-	};
+	}                                                                                                                                                                 ;
 
-	let loopStatusTimer = null; // 循环定时器
+	let loopStatusTimer = null                                                                                                                                        ; // 循环定时器
 	let batchObj = { // 发请求用的对象
 		id: [],
 		func: '',
 		code: ''
-	};
+	}                                                                                                                                                                 ;
 	let tableMul = getCheckbox()
 	function handleOperating(command) { // 批量操作
 		clearInterval(loopStatusTimer)
@@ -566,7 +602,7 @@
 		batchObj.func = command
 		tableMul = getCheckbox()
 		// vue那边的逻辑，直接赋值也行，因为那边的item是row，这边的item直接就是id，所以可以直接push
-		for (let i = 0; i < tableMul.length; i++) {
+		for (let i = 0                                                                                                                                                   ; i < tableMul.length; i++) {
 			const item = tableMul[i]
 			batchObj.id.push(item)
 		}
@@ -577,18 +613,18 @@
 			data: batchObj,
 			success: function (data) {
 				if (data.status == 200) {
-					toastr.success(data.msg)
+					iziToast.success({title: '成功', message: data.msg})
 
 					loopGetStatus(serviceList)
 				}
 			}
-		});
+		})                                                                                                                                                               ;
 
 		// if (this.tableData.length === 1) {
 		// 	this.tableData[0].status.data.status = 'process'
 		// }
 
-	};
+	}                                                                                                                                                                 ;
 
 	function getStatus(items) { // 获取列表电源状态
 		const obj = {
@@ -601,7 +637,7 @@
 			//return i.status?.data?.status !== 'on'
 		})
 		if (Array.isArray(items)) {
-			for (let i = 0; i < items.length; i++) {
+			for (let i = 0                                                                                                                                                  ; i < items.length; i++) {
 				const element = items[i]
 				obj.id.push(element.id)
 			}
@@ -626,8 +662,8 @@
 				// let sucArr = [] // 可以正常返回状态的服务器
 				// let errArr = []	// 不支持查询状态的服务器
 				// // 把列表服务器分成能查状态的和不能查状态的
-				// for (let i = 0; i < allStatus.length; i++) {
-				// 	const item = allStatus[i];
+				// for (let i = 0                                                                                                                                              ; i < allStatus.length; i++) {
+				// 	const item = allStatus[i]                                                                                                                                  ;
 				// 	if (item.status === 200) {
 				// 		sucArr.push(item)
 				// 	} else {
@@ -654,17 +690,17 @@
 				for (const k in data.data) {
 					const element = data.data[k]
 					if (element.status === 200) {
-						$(`#service${k}`)
+						$(`                                                                                                                                                          #service${k}`)
 							.show()
-							.attr('data-original-title', element.data.des);
+							.attr('data-original-title', element.data.des)                                                                                                              ;
 						setColor(element, k)
 
 					}
 				}
 			}
-		});
+		})                                                                                                                                                               ;
 
-	};
+	}                                                                                                                                                                 ;
 
 	function getSingleStatus(id) { // 单个查状态
 		const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
@@ -683,19 +719,19 @@
 
 				const result = data.data[id]
 				if (result.status === 200) {
-					$(`#service${id}`)
+					$(`                                                                                                                                                           #service${id}`)
 						.show()
-						.attr('data-original-title', result.data.des);
+						.attr('data-original-title', result.data.des)                                                                                                                ;
 					$(`#service${id}`).removeClass().addClass('dots');
 					setColor(result, id)
 				}
 			}
-		});
-	};
+		})                                                                                                                                                               ;
+	}                                                                                                                                                                 ;
 
 	function setColor(item, id) {
-		//console.log('id: ', id);
-		//console.log('item: ', item.data.status);
+		//console.log('id: ', id)                                                                                                                                        ;
+		//console.log('item: ', item.data.status)                                                                                                                        ;
 		if (item.data.status === 'on') {
 			$(`#service${id}`).removeClass().addClass('dots on_color').html('');
 		} else if (item.data.status === 'off') {
@@ -706,7 +742,7 @@
 			const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
 			$(`#service${id}`).removeClass().addClass('dots ing_color').html(loadingIcon);
 		}
-	};
+	}                                                                                                                                                                 ;
 
 	function loopGetStatus(items) { // 循环5分钟
 		if (loopStatusTimer !== null) { // 如果不是初始值，则恢复成初始值
@@ -723,7 +759,7 @@
 			getStatus(serviceList)
 			endTime += 15
 		}, 15 * 1000)
-	};
+	}                                                                                                                                                                 ;
 
 
 
@@ -743,12 +779,12 @@
 				remark: $('#notesInp').val()
 			},
 			success: function (data) {
-				toastr.success(data.msg)
+				iziToast.success({title: '成功', message: data.msg})
 				$('#modifyNotesModal').modal('hide')
 				location.reload()
 			}
-		});
-	});
+		})                                                                                                                                                               ;
+	})                                                                                                                                                                ;
 
 
 </script>
@@ -756,16 +792,16 @@
 <script src="/themes/clientarea/default/assets/libs/clipboard/clipboard.min.js?v={$Ver}"></script>
 <script>
 	// var clipboard = null
-  // var ips = {:json_encode($Service.list)};
-  // // console.log('ips: ', ips);
-  // $(document).on('mouseover', '.iptd', function () {
-  //   $('#popModal').modal('show')
-  //   $('#popTitle').text('IP地址')
-  //   if (clipboard) {
-  //     clipboard.destroy()
+// var ips = {:json_encode($Service.list)}                                                                                                                         ;
+// // console.log('ips: ', ips)                                                                                                                                    ;
+// $(document).on('mouseover', '.iptd', function () {
+// $('#popModal').modal('show')
+// $('#popTitle').text('IP地址')
+// if (clipboard) {
+// clipboard.destroy()
 	// 	}
 		
-  //   ips.forEach(function(item, index)  {
+// ips.forEach(function(item, index) {
 	// 		if (item.dedicatedip && item.assignedips && $(this).attr('id') == ('ips'+item.id)) {
 	// 			var ipbox = `
 	// 				<div class="text-right text-primary mb-2 pointer" id="copyip${item.id}" data-clipboard-action="copy" data-clipboard-target="#ippopbox${item.id}">复制</div>
@@ -783,19 +819,19 @@
 
 	// 			// 复制
 	// 			clipboard = new ClipboardJS('#copyip'+item.id, {
-  //         text: function (trigger) {
-  //           return $('#ippopbox'+item.id).text()
-  //         },
-  //         container: document.getElementById('popModal')
-  //       });
-  //       clipboard.on('success', function (e) {
-  //         toastr.success('{$Lang.copy_succeeded}');
-  //       })
+// text: function (trigger) {
+// return $('#ippopbox'+item.id).text()
+// },
+// container: document.getElementById('popModal')
+// })                                                                                                                                                              ;
+// clipboard.on('success', function (e) {
+// toastr.success('{$Lang.copy_succeeded}');
+// })
 	// 		}
-      
-  //   })
 
-    
-  // });
+// })
+
+
+// })                                                                                                                                                              ;
 
 </script>

@@ -279,11 +279,11 @@
 		// 提交加载中
 		$('.submitBtn').on('click', function () {
 			if ($('.personFrontimg').length > 1) {
-				toastr.error(''+{$Lang.card_allowed_front})
+				iziToast.error({title: '异常', message: '+{$Lang.card_allowed_front}'});
 				return
 			}
 			if ($('.personBackimg').length > 1) {
-				toastr.error(''+{$Lang.card_allowed_back})
+				iziToast.error({title: '异常', message: '+{$Lang.card_allowed_back}'});
 				return
 			}
 			$('.submitBtn').prepend('<i class="bx bx-loader bx-spin font-size-16 align-middle mr-2"></i>')

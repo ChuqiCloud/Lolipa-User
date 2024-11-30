@@ -3,6 +3,9 @@
 </div> -->
 <script type="text/javascript">
 	$(function () {
-		toastr.error('[value]');
+		iziToast.error({
+          title: '异常',
+          message: '[value]',
+        });
 	});
 </script>

@@ -37,7 +37,7 @@ function getCode(getCodeBtn,url,code_captcha){
 				$(getCodeBtn).removeData("disabled");	
             } else {
                 setCutdown(getCodeBtn)
-                toastr.success(res.msg)
+                iziToast.success({title: '成功', message: res.msg});
             }
 			
         },
@@ -76,7 +76,7 @@ function loginBefore(loginType){
 			});
 			$("#secondVerifyModal select").html(option);
 		}else{
-			toastr.error(res.msg);
+			iziToast.error({title: '异常', message: res.msg});
 		}
 	},'json');
 }

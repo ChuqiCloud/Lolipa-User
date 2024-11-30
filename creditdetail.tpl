@@ -201,7 +201,7 @@
       setTimeout(function(){
         $(this).show()
       }, 50);
-      toastr.success('{$Lang.please_wait_while_building}...')
+      iziToast.success({title: '成功', message: '{$Lang.please_wait_while_building}...'});
       html2canvas(document.getElementById('pdfCentent'), {
         logging: false
       }).then(function (canvas) {

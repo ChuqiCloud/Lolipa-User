@@ -2,7 +2,7 @@
 {if $ErrorMsg}
 <script>
 $(function () {
-  toastr.error('{$ErrorMsg}');
+  iziToast.error({title: '异常', message: '{$ErrorMsg}'});
 });
 </script>
 {else /}
@@ -224,7 +224,7 @@ $(function () {
                     , type: 'get'
                     , success: function (e) {
                         if (e.status != 200) {
-                            toastr.error('配置项错误');
+                              iziToast.error({title: '异常', message: '配置项错误'});
                             return false;
                         }
                         appendLinkAge(data, e);
@@ -397,7 +397,7 @@ function numberKeyup2(_this) {
     let blNum = (parseInt(_this.val()) - parseInt(min)) / (parseInt(max) - parseInt(min)) * 100
     _this.siblings(".configoption_range").css( 'background', 'linear-gradient(to right, #2948df, #F1F3F8 ' + blNum + '%, #F1F3F8)' );
     if($(_this).val()%$(_this).attr('qty_stage')!=0 && $(_this).val() != $(_this).attr('min') && $(_this).val() != $(_this).attr('max')) {
-        toastr.error(`请输入${$(_this).attr('qty_stage')}的倍数`);
+          iziToast.error({title: '异常', message: '请输入${$(_this).attr('qty_stage')}的倍数'});
         _this.val($(_this).attr('min'));
         _this.siblings(".configoption_range").css('background','#ebeff4').val($(_this).attr('min'));
     }
@@ -892,10 +892,10 @@ function config_result(result){
                         if(res.status == 200){
                             window.location.href = "/viewbilling?id="+ res.data.invoiceid;
                         }else if(res.status == 1001){
-                            toastr.success(res.msg)
+                            iziToast.success({title: '成功', message: res.msg})
                             window.location.reload()
                         }else{
-                            toastr.error(res.msg)
+                            iziToast.error({title: '异常', message: res.msg})
                         }
              $('#modalUpgradeConfigStepSure').modal("hide");
                     },

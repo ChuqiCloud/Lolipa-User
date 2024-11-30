@@ -1,7 +1,5 @@
-
 {include file="includes/tablestyle"}
 {include file="includes/pop"}
-
 
 <script>
 	$(function () {
@@ -22,7 +20,7 @@
 			})
 
 			location.href = 'service?groupid={$Think.get.groupid}' + parmas
-		});
+		})                                                               ;
 		// 关键字搜索
 		$('#searchInp').val('{$Think.get.keywords}')
 
@@ -35,7 +33,7 @@
 		$('#searchIcon').on('click', function () {
 			location.href = 'service?groupid={$Think.get.groupid}&keywords=' + $('#searchInp').val() +
 					'&sort={$Think.get.sort}&orderby={$Think.get.orderby}&page={$Think.get.page}&limit={$Think.get.limit}'
-		});
+		})                                                                                                         ;
 		// 设置样式
 
 		// 排序
@@ -77,11 +75,11 @@
 						<div class="col">
 							<select class="selectpicker" id="statusSel" data-style="btn-default" title="{$Lang.please_select_status}" multiple>
 								{foreach $Service.domainstatus as $key => $list}
-									<option value="{$key}">{$list.name}</option>
+									<option value="{$key}">{$Lang['domainstatus_select_'.strtolower($key)]}</option>
 								{/foreach}
 							</select>
 							{if (isset($nav_info.orderFuc) && $nav_info.orderFuc)}
-								<a href="{$nav_info.orderFucUrl}" class="btn btn-sm btn-primary w-xs">订购产品</a>
+								<a href="{$nav_info.orderFucUrl}" class="btn btn-sm btn-primary w-xs">{$Lang.ordering_products}</a>
 							{/if}
 						</div>
 					</div>
@@ -135,14 +133,8 @@
 								</span>
 						</th>
 						<th>{$Lang.product}</th>
-						<!--<th class="pointer" prop="dedicatedip">
-                            <span>IP</span>
-                            <span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
-                                <i class="bx bx-caret-up"></i>
-                                <i class="bx bx-caret-down"></i>
-                            </span>
-                        </th>-->
-						<th>IP</th>
+						<th>配置信息</th>
+						<th data-toggle="popover" data-trigger="hover" title="实例用量概览" data-content="用量非实时更新，而是智简魔方财务系统每5分钟固定更新一次。">用量</th>
 						<th class="pointer" prop="nextduedate">
 							<span>{$Lang.due_date}</span>
 							<span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
@@ -150,16 +142,7 @@
 									<i class="bx bx-caret-down"></i>
 								</span>
 						</th>
-						<!--<th class="pointer" prop="amount">
-								<span>{$Lang.cost}</span>
-								<span class="text-black-50 d-inline-flex flex-column justify-content-center ml-1 offset-3">
-									<i class="bx bx-caret-up"></i>
-									<i class="bx bx-caret-down"></i>
-								</span>
-							</th>-->
 						<th>{$Lang.cost}</th>
-						<th>{$Lang.system}</th>
-						<th>{$Lang.remarks}</th>
 						<th>{$Lang.operating}</th>
 					</tr>
 					</thead>
@@ -170,7 +153,7 @@
 								<td>
 									<div class="custom-control custom-checkbox mb-3">
 										<input type="checkbox" class="custom-control-input row-checkbox" id="customCheck{$list.id}"
-											   data-status="{$list.domainstatus}">
+											 data-status="{$list.domainstatus}">
 										<label class="custom-control-label" for="customCheck{$list.id}"></label>
 									</div>
 								</td>
@@ -182,17 +165,32 @@
 									</div>
 
 									<span class="badge badge-pill font-size-12
-									status-{$list.domainstatus|strtolower}"">{$list.domainstatus_desc|strtolower}</span>
+									status-{$list.domainstatus|strtolower}">{$Lang['domainstatus_select_'.strtolower($list.domainstatus)]}</span>
+
 								</td>
 								<td>
 									<a href=" servicedetail?id={$list.id}" class="text-dark">
-										<strong>{$list.productname}</strong>
-									</a><br />
-									<small class="text-muted">{$list.domain}</small>
+										<strong>{if $list.notes}{$list.notes}{else}{$list.productname}{/if}</strong>
+									</a><i class="bx bx-edit-alt pointer text-primary"
+									 onclick="editNotesHandleClick('{$list.id}', '{$list.notes}')" data-toggle="tooltip" data-placement="top" title="修改实例备注"></i><br />
+									<small class="text-muted">{if $list.notes}{$list.productname}{else}备注{/if}</small><br>
+									<small class="text-muted">{$list.domain}</small><br>
 								</td>
-								<!-- <td>{if $list.dedicatedip}{$list.dedicatedip}{else}-{/if}</td> -->
-
 								<td>
+<i class="bx bx-data"></i> 系统：
+									{if $list.os_url}
+										{if $list.svg}
+											<img width="14" height="14" src="/upload/common/system/{$list.svg}.svg" alt="">
+										{else}
+											<img width="14" height="14" src="/upload/common/system/{$list.os_url|getOsSvg}.svg"
+												 alt="">
+										{/if}
+										{$list.os_url}
+									{else}
+										-
+									{/if}
+									<br>
+									<i class="bx bx-link"></i> IP地址：
 									{if $list.dedicatedip}
 										{if ($list.assignedips && count($list.assignedips) > 1)}
 											<span data-toggle="popover" data-trigger="hover" title="" data-html="true" data-content="
@@ -207,58 +205,166 @@
 											<span>{$list.dedicatedip}</span>
 										{/if}
 									{else}
-										-
+										{if $list.domainstatus == "Active"}
+										无独立IP <a href="#" data-toggle="popover" data-trigger="hover" title="没有独立IP的实例" data-content="当前实例没有明确绑定一个独立IP，意味着可能正在使用转发服务(NAT)。您可以尝试升级配置添加一个独立IP，以提高您的实例业务公网访问稳定性。">这影响了什么？</a>
+										{else}
+										不能获取未激活的实例IP
+										{/if}
 									{/if}
-
+									<br>
+									<i class="bx bx-chip"></i> vCPU：{$list.cpu}/RAM：{$list.memory}
+								</td>
+								<td>
+								 {if $list.domainstatus == "Active"}
+<span>
+CPU使用率：<span id="yangcube-cpu-lable-{$list.id}">获取中</span>
+<div class="progress">
+<div id="yangcube-cpu-progress-{$list.id}" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+</div>
+</span>
+<span>
+内存使用率：<span id="yangcube-mem-lable-{$list.id}">获取中</span>
+<div class="progress">
+<div id="yangcube-mem-progress-{$list.id}" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+</div>
+</span>
+<script>
+$.ajax({
+type: "GET",
+url: '/v1/hosts/{$list.id}/module/charts?type=cpu',
+success: function(data) {
+if (cpuData = data.data.list[0]) {
+cpuDataLength = cpuData.length
+cpuDataLatest = cpuData[cpuDataLength - 1].value
+$("#yangcube-cpu-progress-{$list.id}").css("width",cpuDataLatest + "%")
+$("#yangcube-cpu-lable-{$list.id}").html(cpuDataLatest + "%")
+if (cpuDataLatest > 85) {
+$("#yangcube-cpu-progress-{$list.id}").addClass('bg-danger')
+} else if (cpuDataLatest > 65) {
+$("#yangcube-cpu-progress-{$list.id}").addClass('bg-warning')
+} else {
+$("#yangcube-cpu-progress-{$list.id}").addClass('bg-success')
+}
+} else {
+$("#yangcube-cpu-progress-{$list.id}").css("width","0%")
+$("#yangcube-cpu-lable-{$list.id}").html("暂无数据，请稍后再试")
+}
+},
+error: function(data) {
+$("#yangcube-cpu-progress-{$list.id}").css("width","0%")
+$("#yangcube-cpu-lable-{$list.id}").html("暂无数据，请稍后再试")
+}
+})                                                                                                                                                                                          ;
+</script>
+<script>
+$.ajax({
+type: "GET",
+url: '/v1/hosts/{$list.id}/module/charts?type=memory',
+success: function(data) {
+memUnit = data.data.unit
+memallData = data.data.list[0]
+memallDataLength = memallData.length
+memallDataLatest = memallData[memallDataLength - 1].value
+memnowData = data.data.list[1]
+memnowDataLength = memnowData.length
+memnowDataLatest = memnowData[memnowDataLength - 1].value
+memDisplay = 100 * memnowDataLatest / memallDataLatest
+$("#yangcube-mem-progress-{$list.id}").css("width",memDisplay + "%")
+$("#yangcube-mem-lable-{$list.id}").html(memnowDataLatest + memUnit + " / " + memallDataLatest + memUnit + " (" + Math.round(memDisplay) + "%)")
+if (memDisplay > 75) {
+$("#yangcube-mem-progress-{$list.id}").addClass('bg-danger')
+} else if (memDisplay > 60) {
+$("#yangcube-mem-progress-{$list.id}").addClass('bg-warning')
+} else {
+$("#yangcube-mem-progress-{$list.id}").addClass('bg-success')
+}
+$("#yangcube-mem-progress-{$list.id}").removeClass('progress-bar')
+$("#yangcube-mem-progress-{$list.id}").addClass('progress-determinate')
+},
+error: function(data) {
+$("#yangcube-mem-progress-{$list.id}").css("width","0%")
+$("#yangcube-mem-lable-{$list.id}").html("暂无数据，请稍后再试")
+$("#yangcube-mem-progress-{$list.id}").removeClass('progress-bar')
+$("#yangcube-mem-progress-{$list.id}").addClass('progress-determinate')
+}
+})                                                                                                                                                                                          ;
+</script>
+{else}
+<span>
+CPU使用率：<span id="yangcube-cpu-lable-{$list.id}">不能获取未激活的实例用量</span>
+<div class="progress">
+<div id="yangcube-cpu-progress-{$list.id}" style="width: 0%;" class="progress-determinate"></div>
+</div>
+</span>
+<span>
+内存使用率：<span id="yangcube-mem-lable-{$list.id}">不能获取未激活的实例用量</span>
+<div class="progress">
+<div id="yangcube-mem-progress-{$list.id}" style="width: 0%;" class="progress-determinate"></div>
+</div>
+</span>
+{/if}
 								</td>
 								<td>
 									{if $list.cycle_desc != '一次性' && $list.cycle_desc != '免费'}
 										<span>{$list.nextduedate|date="Y-m-d"}</span>
 										{if $list.host_cancel != ''}
 											<span class="bx bxs-error-circle text-danger" data-toggle="popover" data-trigger="hover"
-												  title="{$Lang.disable_and_remove_the_product}" data-html="true"
-												  data-content="{$Lang.cancellation_time}：{$list.host_cancel.type}<br>{$Lang.cancelreason}：{$list.host_cancel.reason}"></span>
+												 title="{$Lang.disable_and_remove_the_product}" data-html="true"
+												 data-content="{$Lang.cancellation_time}：{$list.host_cancel.type}<br>{$Lang.cancelreason}：{$list.host_cancel.reason}"></span>
 										{/if}
 									{else}-
 									{/if}
+									<br>
+									<span id="remaining-days-{$list.id}"></span>
+<script>
+let dueDateString{$list.id} = "{$list.nextduedate|date='Y-m-d'}"; // 获取日期字符串
+let [year{$list.id}, month{$list.id}, day{$list.id}] = dueDateString{$list.id}.split('-').map(Number); // 解析字符串为年月日
+
+// 使用 Date(year, monthIndex, day) 构造日期对象，注意 monthIndex 从 0 开始
+let dueDate{$list.id} = new Date(year{$list.id}, month{$list.id} - 1, day{$list.id});
+
+let now{$list.id} = new Date();
+let diff{$list.id} = dueDate{$list.id}.getTime() - now{$list.id}.getTime();
+let daysRemaining{$list.id} = Math.ceil(diff{$list.id} / (1000 * 60 * 60 * 24));
+let message{$list.id} = "";
+let color{$list.id} = "";
+
+if (daysRemaining{$list.id} > 30) {
+message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
+color{$list.id} = "#27cc85";
+} else if (daysRemaining-{$list.id} > 5) {
+message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
+color{$list.id} = "orange";
+} else if (daysRemaining-{$list.id} >= 0) { // 修改这里，包含0
+message{$list.id} = "[剩余 " + daysRemaining{$list.id} + " 天到期]";
+color{$list.id} = "red";
+} else {
+message{$list.id} = "[" + Math.abs(daysRemaining{$list.id}) + " 天前已到期]";
+color{$list.id} = "red"; // 过期也显示红色
+}
+
+let span{$list.id} = document.getElementById("remaining-days-{$list.id}");
+span{$list.id}.innerText = message{$list.id};
+span{$list.id}.style.color = color{$list.id};
+span{$list.id}.style.fontSize = "12px"; // 添加字体大小
+span{$list.id}.style.fontWeight = "500"; // 添加字体粗细
+
+</script>
 								</td>
 								<td>
 									<div>
 										{if $list.billingcycle != 'free' && $list.billingcycle != 'ontrial'}
-											{$list.price_desc}/
-											{if $list.billingcycle == 'day'}{$list.pay_type.pay_day_cycle}{$Lang.day}
-											{elseif $list.billingcycle == 'hour'}{$list.pay_type.pay_hour_cycle}{$Lang.hour}
-											{else}{$list.cycle_desc}
-											{/if}
+											{$list.price_desc}/{if is_null($Lang[$list.billingcycle])}{$list.billingcycle}{else}{$Lang[$list.billingcycle]}{/if}
 										{else}
-											{$list.cycle_desc}
+											{$Lang[$list.billingcycle]}
 										{/if}
 									</div>
 									<div class="text-black-50">
 										{if $list.initiative_renew && $list.billingcycle != 'free' && $list.billingcycle != 'onetime'}{$Lang.automatic_renewal_of_balance}{/if}
 									</div>
 								</td>
-								<!-- 系统 -->
 								<td>
-									{if $list.os_url}
-										{if $list.svg}
-											<img width="14" height="14" src="/upload/common/system/{$list.svg}.svg" alt="">
-										{else}
-											<img width="14" height="14" src="/upload/common/system/{$list.os_url|getOsSvg}.svg"
-												 alt="">
-										{/if}
-										{$list.os_url}
-									{else}
-										-
-									{/if}
-								</td>
-								<td>{if $list.notes}{$list.notes}{else}-{/if}
-									<i class="bx bx-edit-alt pointer text-primary"
-									   onclick="editNotesHandleClick('{$list.id}', '{$list.notes}')"></i>
-									<!--  data-toggle="modal" data-target="#modifyNotesModal" -->
-								</td>
-								<td>
-									<a href="servicedetail?id={$list.id}" class="btn btn-sm btn-primary w-xs">{$Lang.operating}</a>
+									<a href="servicedetail?id={$list.id}" class="btn btn-sm btn-primary w-xs">管理实例</a>
 								</td>
 							</tr>
 						{/foreach}
@@ -316,14 +422,14 @@
 
 <style>
 	.dots {
-		cursor: pointer;
-		width: 15px;
-		height: 15px;
-		border-radius: 50%;
-		border: 1px solid #fff;
-		position: absolute;
-		top: 6px;
-		left: 6px;
+		cursor: pointer    ;
+		width: 15px        ;
+		height: 15px       ;
+		border-radius: 50% ;
+		border: 1px solid  #fff;
+		position: absolute ;
+		top: 6px           ;
+		left: 6px          ;
 	}
 
 	.on_color {
@@ -347,7 +453,7 @@
 	}
 
 	.not_support_color {
-		background-color: #2d2d2d;
+		background-color:   #2d2d2d;
 	}
 </style>
 
@@ -381,7 +487,7 @@
 </div>
 
 <script>
-	var serviceList = {:json_encode($Service.list)}; // 当前页列表数据
+	var serviceList = {:json_encode($Service.list)}                                                                                                    ; // 当前页列表数据
 	$(function () {
 		if($('.row-checkbox:checked').length){
 			$('#readBtn').removeAttr('disabled').removeClass('not-allowed');
@@ -404,19 +510,19 @@
 				$('#readBtn').attr('disabled', 'disabled').addClass('not-allowed');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true;
-			let plStatus = true;
+			let xfStatus = true                                                                                      ;
+			let plStatus = true                                                                                      ;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false;
+					xfStatus = false                                                                                       ;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false;
+					plStatus = false                                                                                       ;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -429,7 +535,7 @@
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		});
+		})                                                                                                        ;
 		$('.row-checkbox').on('change', function () {
 			$('input[name="headCheckbox"]').prop('checked', $('.row-checkbox').length === $('.row-checkbox:checked')
 					.length)
@@ -447,19 +553,19 @@
 				$('#bulkOperation').removeClass('not-allowed').removeAttr('disabled');
 			}
 			// 以产品状态来判断批量操作按钮是否启用
-			let xfStatus = true;
-			let plStatus = true;
+			let xfStatus = true                                                        ;
+			let plStatus = true                                                        ;
 			const allCheck = [...$('.row-checkbox:checked')]
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"&&thisStatus!="已暂停"){
-					xfStatus = false;
+					xfStatus = false                                                         ;
 				}
 			})
 			allCheck.forEach(res=>{
 				let thisStatus = $(res).parents('td').next().find('.badge-pill').html();
 				if(thisStatus!="已激活"){
-					plStatus = false;
+					plStatus = false                                                         ;
 				}
 			})
 			if(xfStatus&&allCheck.length>0) {
@@ -472,7 +578,7 @@
 			} else {
 				$("#bulkOperation").attr("disabled","disabled")
 			}
-		});
+		})                                                                          ;
 
 		$('#readBtn').on('click', function () {
 			var idArr = getCheckbox()
@@ -490,7 +596,7 @@
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key];
+					const item = allCheck[key]                      ;
 					ids.push(item.id.substring(11))
 				}
 			}
@@ -504,7 +610,7 @@
 			const allCheck = [...$('.row-checkbox:checked')]
 			for (const key in allCheck) {
 				if (Object.hasOwnProperty.call(allCheck, key)) {
-					const item = allCheck[key];
+					const item = allCheck[key]                      ;
 					statusArr.push($(item).attr('data-status'))
 				}
 			}
@@ -512,7 +618,7 @@
 		}
 
 		// 给当前页数据加属性
-		for (let i = 0; i < serviceList.length; i++) {
+		for (let i = 0               ; i < serviceList.length; i++) {
 			const item = serviceList[i]
 			item.loading = false
 			item.status = {
@@ -534,19 +640,19 @@
 		const allCheck = [...$('.row-checkbox:checked')]
 		for (const key in allCheck) {
 			if (Object.hasOwnProperty.call(allCheck, key)) {
-				const item = allCheck[key];
+				const item = allCheck[key]                      ;
 				ids.push(item.id.substring(11))
 			}
 		}
 		return ids
-	};
+	}                                                  ;
 
-	let loopStatusTimer = null; // 循环定时器
+	let loopStatusTimer = null                                 ; // 循环定时器
 	let batchObj = { // 发请求用的对象
 		id: [],
 		func: '',
 		code: ''
-	};
+	}                                                          ;
 	let tableMul = getCheckbox()
 	function handleOperating(command) { // 批量操作
 		clearInterval(loopStatusTimer)
@@ -554,7 +660,7 @@
 		batchObj.func = command
 		tableMul = getCheckbox()
 		// vue那边的逻辑，直接赋值也行，因为那边的item是row，这边的item直接就是id，所以可以直接push
-		for (let i = 0; i < tableMul.length; i++) {
+		for (let i = 0                                            ; i < tableMul.length; i++) {
 			const item = tableMul[i]
 			batchObj.id.push(item)
 		}
@@ -570,13 +676,13 @@
 					loopGetStatus(serviceList)
 				}
 			}
-		});
+		})                            ;
 
 		// if (this.tableData.length === 1) {
 		// 	this.tableData[0].status.data.status = 'process'
 		// }
 
-	};
+	} ;
 
 	function getStatus(items) { // 获取列表电源状态
 		const obj = {
@@ -589,7 +695,7 @@
 			//return i.status?.data?.status !== 'on'
 		})
 		if (Array.isArray(items)) {
-			for (let i = 0; i < items.length; i++) {
+			for (let i = 0                                        ; i < items.length; i++) {
 				const element = items[i]
 				obj.id.push(element.id)
 			}
@@ -614,8 +720,8 @@
 				// let sucArr = [] // 可以正常返回状态的服务器
 				// let errArr = []	// 不支持查询状态的服务器
 				// // 把列表服务器分成能查状态的和不能查状态的
-				// for (let i = 0; i < allStatus.length; i++) {
-				// 	const item = allStatus[i];
+				// for (let i = 0                                 ; i < allStatus.length; i++) {
+				// 	const item = allStatus[i]                     ;
 				// 	if (item.status === 200) {
 				// 		sucArr.push(item)
 				// 	} else {
@@ -642,17 +748,17 @@
 				for (const k in data.data) {
 					const element = data.data[k]
 					if (element.status === 200) {
-						$(`#service${k}`)
+						$(`                                                  #service${k}`)
 								.show()
-								.attr('data-original-title', element.data.des);
+								.attr('data-original-title', element.data.des)     ;
 						setColor(element, k)
 
 					}
 				}
 			}
-		});
+		})   ;
 
-	};
+	} ;
 
 	function getSingleStatus(id) { // 单个查状态
 		const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
@@ -671,19 +777,19 @@
 
 				const result = data.data[id]
 				if (result.status === 200) {
-					$(`#service${id}`)
+					$(`                                                #service${id}`)
 							.show()
-							.attr('data-original-title', result.data.des);
+							.attr('data-original-title', result.data.des)    ;
 					$(`#service${id}`).removeClass().addClass('dots');
 					setColor(result, id)
 				}
 			}
-		});
-	};
+		})                                                    ;
+	}                                                      ;
 
 	function setColor(item, id) {
-		//console.log('id: ', id);
-		//console.log('item: ', item.data.status);
+		//console.log('id: ', id)                                                                                                 ;
+		//console.log('item: ', item.data.status)                                                                                 ;
 		if (item.data.status === 'on') {
 			$(`#service${id}`).removeClass().addClass('dots on_color').html('');
 		} else if (item.data.status === 'off') {
@@ -694,7 +800,7 @@
 			const loadingIcon = `<i class="bx bx-loader bx-spin font-size-14 text-dark" style="position: relative; top: -1px;"></i>`
 			$(`#service${id}`).removeClass().addClass('dots ing_color').html(loadingIcon);
 		}
-	};
+	}                                                                                                                          ;
 
 	function loopGetStatus(items) { // 循环5分钟
 		if (loopStatusTimer !== null) { // 如果不是初始值，则恢复成初始值
@@ -711,9 +817,7 @@
 			getStatus(serviceList)
 			endTime += 15
 		}, 15 * 1000)
-	};
-
-
+	}                                                   ;
 
 	// 修改备注
 	var rowId = 0
@@ -735,25 +839,24 @@
 				$('#modifyNotesModal').modal('hide')
 				location.reload()
 			}
-		});
-	});
-
+		})                                               ;
+	})                                                ;
 
 </script>
 
 <script src="/themes/clientarea/default/assets/libs/clipboard/clipboard.min.js?v={$Ver}"></script>
 <script>
 	// var clipboard = null
-	// var ips = {:json_encode($Service.list)};
-	// // console.log('ips: ', ips);
+	// var ips = {:json_encode($Service.list)}                                                        ;
+	// // console.log('ips: ', ips)                                                                   ;
 	// $(document).on('mouseover', '.iptd', function () {
-	//   $('#popModal').modal('show')
-	//   $('#popTitle').text('IP地址')
-	//   if (clipboard) {
-	//     clipboard.destroy()
+	// $('#popModal').modal('show')
+	// $('#popTitle').text('IP地址')
+	// if (clipboard) {
+	// clipboard.destroy()
 	// 	}
 
-	//   ips.forEach(function(item, index)  {
+	// ips.forEach(function(item, index) {
 	// 		if (item.dedicatedip && item.assignedips && $(this).attr('id') == ('ips'+item.id)) {
 	// 			var ipbox = `
 	// 				<div class="text-right text-primary mb-2 pointer" id="copyip${item.id}" data-clipboard-action="copy" data-clipboard-target="#ippopbox${item.id}">复制</div>
@@ -771,19 +874,18 @@
 
 	// 			// 复制
 	// 			clipboard = new ClipboardJS('#copyip'+item.id, {
-	//         text: function (trigger) {
-	//           return $('#ippopbox'+item.id).text()
-	//         },
-	//         container: document.getElementById('popModal')
-	//       });
-	//       clipboard.on('success', function (e) {
-	//         toastr.success('{$Lang.copy_succeeded}');
-	//       })
+	// text: function (trigger) {
+	// return $('#ippopbox'+item.id).text()
+	// },
+	// container: document.getElementById('popModal')
+	// })                                                  ;
+	// clipboard.on('success', function (e) {
+	// toastr.success('{$Lang.copy_succeeded}');
+	// })
 	// 		}
 
-	//   })
+	// })
 
-
-	// });
+	// }) ;
 
 </script>

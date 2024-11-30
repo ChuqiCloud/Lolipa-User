@@ -69,9 +69,9 @@
                     if(res.status == 200){
                         window.location.href = "/viewbilling?id="+ res.data.invoiceid;
                     }else if(res.status == 1001){
-                        toastr.success(res.msg)
+                        iziToast.success({title: '成功', message: res.msg})
                     }else{
-                        toastr.error(res.msg)
+                        iziToast.error({title: '异常', message: res.msg})
                     }
                     _this.removeData('submit')
                 },

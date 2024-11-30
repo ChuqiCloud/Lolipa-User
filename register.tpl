@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//cdn.lolipa.cn" />
+    <link rel="dns-prefetch" href="//lib.baomitu.com" />
     <title>{$Title} | {$Setting.company_name}</title>
-    <link rel="shortcut icon" href="/themes/web/Loli/assets/img/favicon.ico?v={$Ver}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico?v={$Ver}" />
+    <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/vue/3.2.45/vue.global.prod.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="/themes/clientarea/default/assets/libs/metismenu/metisMenu.min.js?v={$Ver}"></script>
     <script src="/themes/clientarea/default/assets/libs/simplebar/simplebar.min.js?v={$Ver}"></script>
     <script src="/themes/clientarea/default/assets/libs/node-waves/waves.min.js?v={$Ver}"></script>
@@ -27,7 +26,7 @@
     <style>body{display: none;}</style>
     <script>$(document).ready(function(){$('body').fadeIn(2000);});</script>        
 </head>
-<body style="background: url(https://www.lolipa.cn/cloud/0fe0e87076fe4723a9063241309df58e.jpeg) no-repeat;background-position: center;background-attachment: fixed;background-size: cover;">
+<body style="background: url(/themes/web/Loli/assets/img/0fe0e87076fe4723a9063241309df58e.jpeg) no-repeat;background-position: center;background-attachment: fixed;background-size: cover;">
 <div id="app">
   <div class="container" style="margin-top: 200px;">
   <div class="row g-3 justify-content-center">
@@ -88,14 +87,14 @@
         <div class="card text-center" style="background-color: rgb(255 255 255 / 92%);">
           <div class="card-body m-md-3">
               <form action="/login?action=email" method="post">
-                  <img class="mb-4 mt-4" src="{$Setting.web_logo_home}" alt="Lolipa" style="width: 200px;">
+                  <img class="mb-4 mt-4" src="{$CustomDepot.logo_2}" alt="Lolipa" style="width: 200px;">
               
                   <h6 class="mb-4 fw-normal text-muted">{{Title}}</h6>
 
 
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="check_input" placeholder="邮箱/手机号">
-                <label for="floatingInput">邮箱/手机号</label>
+                <input type="text" class="form-control" id="check_input" placeholder="手机号">
+                <label for="floatingInput">手机号</label>
               </div>            
                 
                   <button class="w-100 btn btn-primary mb-2" type="button" id="check">继续</button>
@@ -113,7 +112,7 @@
         <div class="card text-center" style="background-color: rgb(255 255 255 / 92%);">
           <div class="card-body m-md-3">
               <form action="/register?action=email" method="post" name="email_js">
-                  <img class="mb-4 mt-4" src="{$Setting.web_logo_home}" alt="Lolipa" style="width: 200px;">
+                  <img class="mb-4 mt-4" src="{$CustomDepot.logo_2}" alt="Lolipa" style="width: 200px;">
               
                   <h6 class="mb-4 fw-normal text-muted">{{Title}}</h6>
 
@@ -132,7 +131,7 @@
     </div>  
       <div class="col-6">
         <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" id="getcode_" name="getcode" onclick="return false;" style="font-size: 18px;
-    margin-top: 6px;">获取验证码</button>
+    margin-top: 6px;" disabled>🚫</button>
       </div>
 </div>     
 
@@ -163,7 +162,7 @@
      {$Lang.ands}<a href="{$Setting.web_privacy_url}" target="_blank">《{$Lang.privacy_policy}》</a>
   </label>
 </div>                
-                  <button class="w-100 btn btn-primary mb-2" type="submit" onclick="if(!beforeSubmit(this)) {return false;};">注册</button>
+                  <button class="w-100 btn btn-primary mb-2" type="submit" onclick="if(!beforeSubmit(this)) {return false;};" disabled>暂不支持邮箱注册</button>
                 </form>                    
               <hr> 
                   <button class="w-100 btn btn-primary mb-2" type="button" onclick="javascript:window.location.href='/pwreset' ">找回密码</button>
@@ -179,7 +178,7 @@
         <div class="card text-center" style="background-color: rgb(255 255 255 / 92%);">
           <div class="card-body m-md-3">
               <form action="/register?action=phone" method="post" name="phone_js">
-                  <img class="mb-4 mt-4" src="{$Setting.web_logo_home}" alt="Lolipa" style="width: 200px;">
+                  <img class="mb-4 mt-4" src="{$CustomDepot.logo_2}" alt="Lolipa" style="width: 200px;">
               
                   <h6 class="mb-4 fw-normal text-muted">{{Title}}</h6>
 

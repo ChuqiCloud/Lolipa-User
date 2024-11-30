@@ -187,8 +187,9 @@ select.form-control {
 	border-color: #3fbf70;
 	padding: 5px 10px;
 }
+
 /*已退款*/
-.status-refunded{
+.status-refunded {
 	background-color: #999999;
 	border-color: #999999;
 }
@@ -496,6 +497,7 @@ select.form-control {
 
 .no-data {
 	display: flex;
+	background: url(/themes/clientarea/Lolipa-User/images/noData.png) no-repeat center 50px;
 	align-items: center;
 	justify-content: center;
 	min-height: 150px;
@@ -1112,10 +1114,11 @@ select.form-control {
 	box-shadow: none;
 }
 
-.bootstrap-select{
+.bootstrap-select {
 	position: relative;
 }
-.bootstrap-select::after{
+
+.bootstrap-select::after {
 	content: '';
 	width: 0;
 	height: 0;
@@ -1200,53 +1203,63 @@ select.form-control {
 
 .table td,
 .table th {
-  vertical-align: middle !important;
+	vertical-align: middle !important;
 }
 
-.label-color{
+.label-color {
 	color: #495057 !important;
 }
 
 /* ssl证书待验证 */
-.status-verifiy_active{
+.status-verifiy_active {
 	color: #fff;
 	background-color: #fca426;
 	border-color: #fca426;
 	padding: 5px 10px;
 }
+
 /* ssl证书即将过期 */
-.status-overdue_active{
+.status-overdue_active {
 	color: #fff;
 	background-color: #6064FF;
 	border-color: #6064FF;
 	padding: 5px 10px;
 }
+
 /* ssl证书已签发 */
-.status-issue_active{
+.status-issue_active {
 	color: #fff;
 	background-color: #3FBF70;
 	border-color: #3FBF70;
 	padding: 5px 10px;
 }
 
-.zd-cascader-wrap .zd-input__inner{
+.zd-cascader-wrap .zd-input__inner {
 	height: 36px;
 }
 
-.zd-cascader-wrap.is-focus .zd-input .zd-input__inner{
-	border-color: #ced4da  !important;
+.zd-cascader-wrap.is-focus .zd-input .zd-input__inner {
+	border-color: #ced4da !important;
 }
 
-.zd-cascader-wrap:focus-within .zd-input__inner{
-	border-color: #ced4da  !important;
+.zd-cascader-wrap:focus-within .zd-input__inner {
+	border-color: #ced4da !important;
 }
-.btn-light:not(:disabled):not(.disabled).active:focus, .btn-light:not(:disabled):not(.disabled):active:focus, .show > .btn-light.dropdown-toggle:focus{
-	box-shadow: none  !important;
-}
-.btn.focus, .btn:focus{
+
+.btn-light:not(:disabled):not(.disabled).active:focus,
+.btn-light:not(:disabled):not(.disabled):active:focus,
+.show>.btn-light.dropdown-toggle:focus {
 	box-shadow: none !important;
 }
-.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show > .btn-light.dropdown-toggle{
+
+.btn.focus,
+.btn:focus {
+	box-shadow: none !important;
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show>.btn-light.dropdown-toggle {
 	background-color: #fff !important;
 	border-color: #ced4da !important;
 }
@@ -1255,12 +1268,12 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-     -webkit-transition-delay: 99999s !important; 
-     -webkit-transition: color 99999s ease-out, background-color 99999s ease-out !important; 
+	-webkit-transition-delay: 99999s !important;
+	-webkit-transition: color 99999s ease-out, background-color 99999s ease-out !important;
 }
 
 input:-webkit-autofill {
-    box-shadow: none !important; 
-     -webkit-box-shadow: none !important; 
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
 
 }
